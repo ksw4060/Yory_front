@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,python,pycharm,visualstudiocode,django
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,python,pycharm,visualstudiocode,django
 
@@ -130,6 +131,10 @@ celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
+=======
+# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,pycharm
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,visualstudiocode,pycharm
+>>>>>>> origin/main
 
 # Environments
 .env
@@ -140,6 +145,7 @@ ENV/
 env.bak/
 venv.bak/
 
+<<<<<<< HEAD
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -171,6 +177,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+=======
+>>>>>>> origin/main
 ### macOS ###
 # General
 .DS_Store
@@ -317,6 +325,7 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
+<<<<<<< HEAD
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
@@ -409,6 +418,8 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+=======
+>>>>>>> origin/main
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -454,4 +465,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,python,pycharm,visualstudiocode,django
+=======
+# End of https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,pycharm
+>>>>>>> origin/main
