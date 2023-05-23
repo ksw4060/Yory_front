@@ -1,0 +1,28 @@
+.gw-centered {
+    margin: 0 auto;
+}
+
+.gw-divider {
+    margin: 3em 0;
+    height: 1px;
+    background: rgb(212, 212, 212)
+}
+
+.gw-btn-small {
+    float: right;
+    margin-left: 5px;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+.gw-btn-nocolor {
+    background-color: rgb(168, 164, 164);
+}
+
+.gw-write-title {
+    margin-bottom: 1em;
+}
+
+.note-editor .note-editable {
+    line-height: 100%;
+}
