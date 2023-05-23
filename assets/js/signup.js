@@ -1,3 +1,4 @@
+// 입력된 정보를 fomdata형식으로 변환 후 signup함수로 전달하는 함수
 function handleSignup(event) {
     event.preventDefault(); // 제출 버튼을 눌렀을 때 새로고침 방지
 
@@ -11,7 +12,7 @@ function handleSignup(event) {
     // FormData를 사용하면 header에 "application/json"을 담지 않아도 됨
     const formData = new FormData();
     formData.append('email', email);
-    formData.append('password2', password2);
+    formData.append('password', password);
     formData.append('nickname', nickname);
     formData.append('bio', bio);
     formData.append('image', image);
@@ -24,6 +25,7 @@ function handleSignup(event) {
     signUp(formData);
 }
 
+// 전달받은 값으로 백엔드에 요청하는 회원가입 함수
 async function signUp(formData) {
     try {
         const response = await fetch('http://127.0.0.1:8000/users/signup/', {
@@ -37,6 +39,8 @@ async function signUp(formData) {
 
         const data = await response.json();
         console.log(data.message);
+        // 회원가입 완료 후 로그인 페이지로 이동
+        window.location.href = "login.html"
     } catch (error) {
         console.error('Error:', error);
     }
