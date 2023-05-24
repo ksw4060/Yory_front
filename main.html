@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="assets/js/nav-bar.js"></script>
+    <script src="/assets/js/nav01.js"></script>
     <script src="/assets/js/footer.js"></script>
 
 
@@ -44,47 +44,11 @@
 
 
 <body>
-    <!-- Header -->
-    <div id="header-wrapper">
-        <header id="header" class="container">
 
-            <!-- Logo -->
-            <div id="logo">
-                <h1><a href="index.html">Verti</a></h1>
-                <span>by HTML5 UP</span>
-            </div>
 
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-
-                    <li><a href="myfeed.html">피드</a></li>
-                    <li>
-                        <a href="#">상품 리뷰</a>
-                        <ul>
-                            <li><a href="#">인기 상품</a></li>
-                            <li><a href="#">인기 리뷰</a></li>
-                            <li>
-                                <a href="#">좋아요한 제품</a>
-                                <ul>
-                                    <li><a href="#">Lorem ipsum dolor</a></li>
-                                    <li><a href="#">Phasellus consequat</a></li>
-                                    <li><a href="#">Magna phasellus</a></li>
-                                    <li><a href="#">Etiam dolore nisl</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">신상품 출시일</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="community-main.html">커뮤니티</a></li>
-                    <li><a href="product-post.html">상품 등록</a></li>
-                    <li class="current"><a href="profile.html">마이페이지</a></li>
-
-                </ul>
-            </nav>
-
-        </header>
-    </div>
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
 
 
     <div class="mytitle"></div>
@@ -100,23 +64,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">전체글 보기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">사용자기호</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            나라별
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li class="dropdown-item"><button onclick="CatCategory()" type="button"
+                                    class="nav-link btn me-2 btn_org">한식</button>
+                            </li>
+                            <li><a class="dropdown-item" href="#">양식</a></li>
+                            <li><a class="dropdown-item" href="#">중식</a></li>
+                            <li><a class="dropdown-item" href="#">일식</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">그 외</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -132,46 +100,11 @@
     </nav>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
+        <div class="mycards">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+                    id="article-list">
 
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
                 </div>
             </div>
         </div>

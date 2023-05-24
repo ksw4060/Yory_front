@@ -9,19 +9,21 @@
 
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="assets/css/main.css" />
+  
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="/assets/js/nav01.js"></script>
     <script src="/assets/js/footer.js"></script>
 </head>
 
 <body>
 
-    <!-- 상단 헤더 시작-->
-    <div id="header-wrapper"></div>
-    <!-- 상단 헤더 끝-->
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
 
 
     <!-- Main 시작 -->
@@ -29,40 +31,44 @@
 
         <!-- 프로필 시작 -->
         <div class="container">
-            <h1 id="mypage_nickname" align="center" style="margin-bottom: 5%">{nickname}님의 프로필</h1>
-            <div class="row gtr-200">
 
-                <div class="col-4" style="text-align: center;">
+            <h2 id="mypage_nickname" justify_align="center" style="margin: 2%">{nickname}님의 프로필</h2>
+            <section class="box feature-ji">
+                <div class="row gtr-200" style="margin: 1%">
 
-                    <a class="button alt">프로필 사진</a>
-                    <a class="image featured" style="cursor: pointer;">
-                        <img id="profile_image" src="assets/images/headerimg.png" alt="" />
-                    </a>
+                    <div class="col-4" style="text-align: center;">
+                        <a class="button alt">프로필 사진</a>
+                        <a class="image featured" style="cursor: pointer;">
+                            <img id="profile_image" src="assets/images/headerimg.png" alt="" />
+                        </a>
+                    </div>
 
+                  
+                    <div class="col-8">
+                        <ul>
+                            <li id="mypage_nickname" style="list-style: none; font-size: x-large;">닉네임: {nickname}</li>
+                            <li id="mypage_email" style="list-style: none; font-size: x-large;">이메일: {email}</li>
+                            <li id="mypage_article_count" style="list-style: none; font-size: x-large;">게시글:
+                                {article_count}개</li>
+                            <li id="mypage_preference" style="list-style: none; font-size: x-large;">좋아하는 음식:
+                                {preference}
+                            </li>
+                            <li id="mypage_follow"
+                                style="float: left; width: 50%; list-style: none; font-size: x-large;">
+                                팔로워:
+                                {follower_count}명</li>
+                            <li id="mypage_follow" style="list-style: none; font-size: x-large;">팔로잉: {following_count}명
+                            </li>
+                            <li id="mypage_bio" style="list-style: none; font-size: x-large;">자기소개: {bio}</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: -5%; margin-bottom :5%;">
+                        <button type="button" class="button alt"
+                            style="float: right; margin:0 15px 0 15px; color: crimson;">탈퇴</button>
+                        <button type=" button" class="button alt" style="float: right;">수정</button>
+                    </div>
                 </div>
-
-                <div class="col-8">
-                    <ul id="profile">
-                        <li id="mypage_nickname" style="list-style: none; font-size: x-large;">닉네임: {nickname}</li>
-                        <li id="mypage_email" style="list-style: none; font-size: x-large;">이메일: {email}</li>
-                        <li id="mypage_article_count" style="list-style: none; font-size: x-large;">게시글:
-                            {article_count}개</li>
-                        <li id="mypage_preference" style="list-style: none; font-size: x-large;">좋아하는 음식: {preference}
-                        </li>
-                        <li id="mypage_follow" style="float: left; width: 50%; list-style: none; font-size: x-large;">
-                            팔로워:
-                            {follower_count}명</li>
-                        <li id="mypage_follow" style="list-style: none; font-size: x-large;">팔로잉: {following_count}명
-                        </li>
-                        <li id="mypage_bio" style="list-style: none; font-size: x-large;">자기소개: {bio}</li>
-                    </ul>
-                </div>
-                <div style="margin-top: -30px">
-                    <button type="button" class="button alt"
-                        style="float: right; margin:0 15px 0 15px; color: crimson;">탈퇴</button>
-                    <button type=" button" class="button alt" style="float: right;">수정</button>
-                </div>
-            </div>
+            </section>
         </div>
 
         <!-- 프로필 끝 -->
@@ -135,6 +141,7 @@
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>
     <!-- 하단 푸터 끝-->
+  
     <script src="/assets/js/mypage.js"></script>
 </body>
 
