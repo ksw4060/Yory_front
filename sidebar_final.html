@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[id="menuicon"] {
+            /* 오른쪽 상단 목차 아이콘 네모박스 틀 */
+            display: none;
+        }
+
+        input[id="menuicon"]+label {
+            /* 네모 박스 크기모양 및 위치 */
+            display: block;
+            width: 3%;
+            height: 2.5%;
+            position: fixed;
+            /* 위치 고정 */
+            right: 1%;
+            /* 체크하기 전 라벨의 위치 */
+            top: calc(10% - 25px);
+            transition: all .35s;
+            cursor: pointer;
+            /* 위에 올렸을 때 커서가 포인터로 보이게 */
+            margin: 20px;
+            /* 상하좌우 바깥 여백이 20픽셀 */
+        }
+
+        input[id="menuicon"]:checked+label {
+            z-index: 2;
+            /* 위,아래 덮는 순서 숫자가 크면 덮습니다 */
+            right: 15%;
+            /* 라벨을 체크했을 때 위치가 오른쪽 기준 15% */
+        }
+
+        input[id="menuicon"]+label span {
+            /* span은 막대기를 의미, span이 총 3개가 있는데 그 세개를 모두 지칭 */
+            display: block;
+            /*
+        일반적으로 설정하지 않아도 div가 갖게되는 기본값이다. (태그에 따라 기본값이 다를 수 있다.)
+        기본적으로 width 가 자신의 컨테이너의 100% 가 되게끔 한다.
+        쉽게 말하자면, 가로 한 줄을 다 차지하게 된다. */
+            position: absolute;
+            width: 70%;
+            height: 15%;
+            border-radius: 30px;
+            background: #000;
+            transition: all .35s;
+        }
+
+        /* span 한줄 한줄의 위치를 의미. */
+        input[id="menuicon"]+label span:nth-child(1) {
+            top: 0;
+        }
+
+        input[id="menuicon"]+label span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        input[id="menuicon"]+label span:nth-child(3) {
+            bottom: 0;
+        }
+
+        /* span이 체크되었을 때에 위치 */
+        input[id="menuicon"]:checked+label span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        input[id="menuicon"]:checked+label span:nth-child(2) {
+            opacity: 0;
+        }
+
+        input[id="menuicon"]:checked+label span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+
+
+
+        .sidebar {
+            /* 사이드바의 위치와 속성 */
+            width: 17%;
+            height: 300%;
+            background-color: #b68a30;
+            position: fixed;
+            top: 0;
+            right: -17%;
+            z-index: 1;
+            transition: all .35s;
+        }
+
+        input[id="menuicon"]:checked+label+div {
+            /* 사이드바랑 딸려 나오는 애 */
+            right: 0;
+        }
+
+        @font-face {
+            font-family: 'SangSangYoungestDaughter';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/SangSangYoungestDaughter.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .sidetop {
+            /* 사이드바 상단 독서하는 12개월 폰트 */
+            margin-top: 20%;
+            margin-bottom: 40%;
+            text-align: center;
+            font-family: 'SangSangYoungestDaughter';
+
+        }
+
+        @font-face {
+            /* 폰트 교보문고, 사이드바 팀 이름 폰트 적용 */
+            font-family: 'KyoboHandwriting2021sjy';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .name {
+            /* 폰트 교보문고, 사이드바 팀 이름 폰트 적용 */
+            text-align: center;
+            margin-bottom: 40%;
+            font-family: 'KyoboHandwriting2021sjy';
+        }
+
+        .pagemove {
+            font-family: 'SangSangYoungestDaughter';
+            /* 사이드바 하단 앨범 보기 및 독서 리뷰 폰트 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 체크박스 아이콘 -->
+    <input type="checkbox" id="menuicon">
+    <label for="menuicon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="sidebar"> <!-- 사이드바 -->
+        <div class="sidetop"> <!-- 사이드바 탑 -->
+            <h2> 12 MONTH </h2>
+            <h2> WITH READING </h2>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div class="name"> <!-- 사이드바 팀멤버 이름-->
+            <h3>팀장</h3>
+            <h4>우소라</h4>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <h3>팀원</h3>
+            <h4>정현균</h4>
+            <h4>김세만</h4>
+            <h4>김성우</h4>
+            <h4>서민경</h4>
+        </div>
+        <div class="pagemove"><!-- 사이드바 하단 클릭시 페이지 이동하는 글씨 -->
+            <h2 style="text-align: center; margin-top: 40px;" href="#" onclick="location.href='main.html'">팀소개</h2>
+            <h2 style="text-align: center; margin-top: 40px;" href="#" onclick="location.href='review.html'">독서리뷰</h2>
+
+        </div>
+    </div>
+</body>
+
+</html>
