@@ -1,11 +1,16 @@
+import { logout } from './logout'   // 회원탈퇴 시 로그아웃을 위해 가져옴
+
+const proxy = "http://127.0.0.1:8000"
+let userId = null
+
 // 유저정보를 요청하는 함수
 async function fetchUserProfile() {
     try {
         // 로컬스토리지에서 엑세스 토큰 가져옴
-        const accessToken = localStorage.getItem('access_token');
+        const accessToken = localStorage.getItem('access');
 
         // 헤더에 토큰정보를 싣고 백엔드에 get요청
-        const response = await fetch('http://127.0.0.1:8000/users/mypage/', {
+        const response = await fetch(`${proxy}/users/mypage/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`
@@ -18,6 +23,7 @@ async function fetchUserProfile() {
 
         // 요청성공하면 받은데이터를 json으로 변환 후 함수로 전달
         const userProfile = await response.json();
+        userId = userProfile.id
         loadMyPage(userProfile);
         loadFollowPage(userProfile);
 
@@ -31,7 +37,7 @@ function loadMyPage(userProfile) {
     // 추후 html에 있는 id로 교체해야함
     const profileImage = document.getElementById('profile_image');
     // 프로필 사진
-    profileImage.src = 'http://127.0.0.1:8000/' + userProfile.image;
+    profileImage.src = proxy + userProfile.image;
 
     // 프로필 박스에 넣는 데이터들
     // 추후 html에 있는 id로 교체해야함
@@ -57,7 +63,7 @@ async function loadFollowPage(userProfile) {
     // 팔로워 표시, 받은 id값을 for문으로 하나씩 백엔드에 요청
     for (const followerId of userProfile.followers) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/users/${followerId}/`, {
+            const response = await fetch(`${proxy}/users/${followerId}/`, {
                 method: 'GET'
             });
 
@@ -73,7 +79,7 @@ async function loadFollowPage(userProfile) {
 
             // 팔로워 이미지 넣는 부분인데, 이미지 div를 따로 만드신건지 확인 필요
             const followerProfileImage = document.createElement('img');
-            followerProfileImage.src = 'http://127.0.0.1:8000/' + followerData.image;
+            followerProfileImage.src = proxy + followerData.image;
             followerContainer.appendChild(followerProfileImage);
 
             // 유저 이름 추가
@@ -91,7 +97,7 @@ async function loadFollowPage(userProfile) {
     // 팔로잉 표시
     for (const followingId of userProfile.followings) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/users/${followingId}/`, {
+            const response = await fetch(`${proxy}/users/${followingId}/`, {
                 method: 'GET'
             });
 
@@ -104,7 +110,7 @@ async function loadFollowPage(userProfile) {
             const followingContainer = document.createElement('div');
 
             const followingProfileImage = document.createElement('img');
-            followingProfileImage.src = 'http://127.0.0.1:8000/' + followingData.image;
+            followingProfileImage.src = proxy + followingData.image;
             followingContainer.appendChild(followingProfileImage);
 
             const followingName = document.createElement('p');
@@ -118,5 +124,41 @@ async function loadFollowPage(userProfile) {
     }
 }
 
+// 회원탈퇴 함수
+async function deleteUser() {
+    try {
+        const confirmation = confirm('회원 탈퇴하시겠습니까?');
+
+        if (!confirmation) {
+            return; // 탈퇴 취소 시 함수 종료
+        }
+
+        // 로컬 스토리지에서 엑세스 토큰 가져옴
+        const accessToken = localStorage.getItem('access');
+
+        // 백엔드에 회원 탈퇴 요청
+        const response = await fetch(`http://127.0.0.1:8000/users/${userId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('회원 탈퇴에 실패하였습니다.');
+        }
+
+        alert('회원 탈퇴가 완료되었습니다.');
+
+        // 로그아웃 함수 가져옴, 로그아웃 시 로그인 페이지로 이동
+        logout();
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 // js파일 로드 시 바로 함수 실행
 fetchUserProfile();
+const deleteButton = document.getElementById('delete');
+deleteButton.addEventListener('click', deleteUser);
