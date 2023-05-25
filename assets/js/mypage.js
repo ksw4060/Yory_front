@@ -1,6 +1,7 @@
 
 const proxy = "http://127.0.0.1:8000"
 let userId = null
+let id = null
 
 const mypageProfileNickName = document.getElementById('mypage_profile_nickname');
 const profileImage = document.getElementById('profile_image');
@@ -15,30 +16,69 @@ const profilebio = document.getElementById('mypage_bio');
 // 유저정보를 요청하는 함수
 async function fetchUserProfile() {
     try {
-        // 로컬스토리지에서 엑세스 토큰 가져옴
         const accessToken = localStorage.getItem('access');
 
-        // 헤더에 토큰정보를 싣고 백엔드에 get요청
+        // URL에서 id 파라미터를 추출
+        const urlParams = new URLSearchParams(window.location.search);
+        id = parseInt(urlParams.get('id'));
+
         const response = await fetch(`${proxy}/users/mypage/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }
         });
-
         if (!response.ok) {
             throw new Error('프로필 정보를 가져오는데 실패하였습니다.');
         }
 
-        // 요청성공하면 받은데이터를 json으로 변환 후 함수로 전달
         const userProfile = await response.json();
-        userId = userProfile.id
-        loadMyPage(userProfile);
-        loadFollowPage(userProfile);
+        userId = parseInt(userProfile.id);
 
+        if (!id || id === userId) {
+            loadMyPage(userProfile);
+            loadFollowPage(userProfile);
+
+        } else {
+            // 주소에 id가 있는 경우 타인의 마이페이지를 가져옴
+            const response = await fetch(`${proxy}/users/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('타인의 프로필 정보를 가져오는데 실패하였습니다.');
+            }
+
+            const userProfile = await response.json();
+            userId = userProfile.id;
+            loadOtherUserPage(userProfile);
+            loadFollowPage(userProfile);
+
+        }
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+// 본인인 경우 수정 버튼과 삭제 버튼을 보이도록 처리하는 함수
+function showEditButtons() {
+    const updateButton = document.getElementById('user_update_button');
+    const deleteButton = document.getElementById('user_delete_button');
+
+    updateButton.style.display = 'block';
+    deleteButton.style.display = 'block';
+}
+
+// 타인인 경우 수정 버튼과 삭제 버튼을 숨김 처리하는 함수
+function hideEditButtons() {
+    const editButton = document.getElementById('user_update_button');
+    const deleteButton = document.getElementById('user_delete_button');
+
+    editButton.style.display = 'none';
+    deleteButton.style.display = 'none';
 }
 
 // 반환된 데이터를 가지고 마이페이지에 넣어주는 함수
@@ -117,6 +157,28 @@ function loadFollowPage(userProfile) {
     }
 }
 
+// 타인의 페이지 로드 함수
+function loadOtherUserPage(userProfile) {
+    // 프로필 사진
+    profileImage.src = proxy + userProfile.image;
+
+    // 프로필 박스에 넣는 데이터들
+    // 추후 html에 있는 id로 교체해야함
+    // 밑에 요소들이 백엔드에서 넘어올 수 있는지 확인해야 함
+    mypageProfileNickName.textContent = userProfile.nickname + '님의 프로필'
+    profileNickName.textContent = '닉네임 : ' + userProfile.nickname
+    profileEmail.textContent = '이메일 : ' + userProfile.email
+    profileArticleCount.textContent = '작성한 게시글 수 : ' + userProfile.article_count
+    profilePreference.textContent = '좋아하는 음식 : ' + userProfile.preference
+    profileFollower.textContent = '팔로워 : ' + userProfile.follower_count + '명'
+    profileFollowing.textContent = '팔로워 : ' + userProfile.following_count + '명'
+    profilebio.textContent = '자기소개 : ' + userProfile.bio
+
+    if (id === userId) {
+        hideEditButtons();
+    }
+}
+
 // 회원탈퇴 함수
 async function deleteUser() {
     try {
@@ -163,5 +225,5 @@ function redirectToMyPage(followId) {
 
 // js파일 로드 시 바로 함수 실행
 fetchUserProfile();
-const deleteButton = document.getElementById('user_delete');
+const deleteButton = document.getElementById('user_delete_button');
 deleteButton.addEventListener('click', deleteUser);
