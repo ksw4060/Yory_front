@@ -22,32 +22,84 @@
 
 </head>
 
+<style>
+    .ALLbody {
+        text-align: center;
+        position: relative;
+        margin-top: 10%;
+        margin-bottom: 10%;
 
+    }
+
+    .titlebody {
+        margin-bottom: 10%;
+        position: relative;
+    }
+
+    .imguploadALL {
+        margin-top: 10%;
+        margin-bottom: 3%;
+        position: relative;
+        background-color: whitesmoke;
+
+        height: 1000px;
+        width: 95%;
+
+        margin: auto;
+    }
+
+    .fromimg_tosubmit {
+        text-align: center;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .filesubmit {
+        text-align: center;
+        margin: auto;
+    }
+
+    .imgupload {
+        padding-top: 5%;
+        margin-bottom: 5%;
+    }
+</style>
 
 <body>
     <!-- 상단 네비게이션바 시작-->
     <div id="navbar-container"></div>
     <!-- 상단 네비게이션바 끝-->
+    <div class="ALLbody">
+        <div style="margin-bottom: 5%;">
+            <img src="./assets/images/AI인공지능.jpg">
+        </div>
+        <div class="titlebody">
+            <h1>조리킹 AI</h1>
+            <h4>냉장고 속 재료를 파악해</h4>
+            <h4>"요리 및 레시피" 를 추천해드립니다!</h4>
+        </div>
+        <div class="imguploadALL">
+            <form>
+                <div class="fromimg_tosubmit">
+                    <div class="imgupload">
+                        <label for="chooseFile">
+                            <h3>이미지 업로드</h3>
+                        </label>
+                    </div>
+                    <div class="filesubmit">
+                        <input type="file" id="chooseFile" accept="image/*" onchange="loadFile(this)">
+                        <div class="image-show" id="image-show"></div>
 
-    <div class="title">
-        <h1>조리킹 AI</h1>
-        <h3>조리킹 AI가 냉장고 속 재료를 파악해 요리를 추천해드립니다!</h3>
+                        <div style="padding-top: 5%;">
+                            <button id="submitButton">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="loader" style="display: none">잠시만 기다려주세요...</div>
+        <div id="joriking"></div>
     </div>
-    <form>
-        <div>
-            <label for="chooseFile">
-                이미지 업로드
-            </label>
-        </div>
-        <input type="file" id="chooseFile" accept="image/*" onchange="loadFile(this)">
-        <div class="image-show" id="image-show"></div>
-        <div>
-            <button id="submitButton">SUBMIT</button>
-        </div>
-    </form>
-    <hr>
-    <div id="loader" style="display: none">Loading...</div>
-    <div id="joriking"></div>
 
 
 
