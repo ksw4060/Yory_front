@@ -1,3 +1,5 @@
+const proxy = "http://127.0.0.1:8000"
+
 let userProfile = null; // 사용자 프로필 데이터를 전역변수로 저장
 let userId = null;  // 사용자 pk값을 전역변수로 저장
 
@@ -5,12 +7,12 @@ let userId = null;  // 사용자 pk값을 전역변수로 저장
 async function fetchUserProfile() {
     try {
         // 로컬스토리지에서 엑세스 토큰 가져옴
-        const accessToken = localStorage.getItem('access_token');
+        const accessToken = localStorage.getItem('access');
         // 엑세스 토큰에서 id값 추출하는 함수 호출
         userId = getPKFromAccessToken(accessToken);
 
         // 헤더에 토큰정보를 싣고 백엔드에 get요청
-        const response = await fetch('http://127.0.0.1:8000/users/mypage/', {
+        const response = await fetch(`${proxy}/users/mypage/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`
@@ -59,7 +61,7 @@ async function updateProfile() {
         formData.append('bio', bio);
         formData.append('image', image);
 
-        const response = await fetch(`http://127.0.0.1:8000/users/${userId}/`, {
+        const response = await fetch(`${proxy}/users/${userId}/`, {
             method: 'PUT',
             body: formData
         });
@@ -84,7 +86,7 @@ function getPKFromAccessToken(accessToken) {
     // atob 함수는 base64로 인코딩된 문자열을 디코딩하는 함수
     // JSON.parse 함수로 json문자열을 javascript 객체로 변환
     const payload = JSON.parse(atob(payloadBase64));
-    const userId = payload.user_id;
+    userId = payload.user_id;
     return userId;
 }
 

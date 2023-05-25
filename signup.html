@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>집사는 집사하느라 집못사 | 회원가입</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="/assets/css/signup.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+
+    <!-- JS -->
+    <script src="/assets/js/signup.js"></script>
+    <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/footer.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 상단 네비게이션바 -->
+    <div id="navbar-container"></div>
+
+
+    <div class="signup-form">
+        <form>
+            <div class="signup-form-control" style="height: 5vh;"><label for="account"></label>
+                <input type="text" name="account" id="account" placeholder="ID" required>
+            </div>
+            <div class="signup-form-control" style="height: 5vh;"><label for="email"></label><input type="email"
+                    name="email" id="email" placeholder="email" required></div>
+            <div class="signup-form-control" style="height: 5vh;"><label for="password"></label><input type="password"
+                    name="password" id="password" placeholder="password" required></div>
+
+            <div class="signup-form-control" style="height: 5vh;"><label for="nickname"></label><input type="text"
+                    name="nickname" id="nickname" placeholder="nickname" required></div>
+
+            <div class="signup-form-control mb-3"><label for="formFile" class="form-label">프로필 이미지</label><input
+                    class="form-control" type="file" name="profile_img" id="profile_img" placeholder="profile_img"
+                    style="border:1px solid rgb(252, 248, 248)"></div>
+
+            <div class="signup-button">
+                <button type="button" onclick="handleSignupButton()">회원가입</button>
+            </div>
+            <hr />
+            <div class="buttons">
+                <button><a href="login.html" style="text-decoration: none; color: white;"> 로그인</a> </button>
+                <button><a href="./reset_password.html" style="text-decoration: none; color: white;"> 비밀번호 재설정
+                    </a></button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- 하단 푸터 시작-->
+    <div id="footer-container"></div>
+    <!-- 하단 푸터 끝-->
+</body>
+
+
+
+</html>

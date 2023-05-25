@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>집사는 집사하느라 집못사</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="/assets/css/article_detail.css" rel="stylesheet">
+
+    <!-- javascript -->
+    <script src="/assets/js/article.js"></script>
+    <script src="/assets/js/article_detail.js"></script>
+    <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/footer.js"></script>
+
+
+
+    <style> </style>
+</head>
+
+<body>
+
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
+
+
+    <div id="article_detail">
+        <!-- 글제목, 수정&삭제 버튼 -->
+        <div class="maintexter">
+
+            <div class="card-body">
+                <div id="category">카테고리</div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">작성자 : <span id="author"></span></div>
+                <h1 id="article-title" class="card text-center"></h1>
+                <p class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    작성날짜 : <span id="article-created-at"></span>
+                </p>
+
+            </div>
+            <div class="card-body">
+                <a href="#" onclick="redirectUpdatePage()" class="btn btn-secondary me-md-2">수정하기</a>
+                <a href="#" onclick="ArticleDelete()" class="btn btn-secondary">삭제하기</a>
+            </div>
+
+        </div>
+
+        <div class="maintexter">
+
+            <img id="article_img" src="" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 id="article-content" class="card-title">Card title</h5>
+
+                <p class="card-text"><small class="text-muted">마지막 수정 : <span id="article-updated-at"></span></small>
+                </p>
+                <!-- <p class="card-text">This is a wider card with supporting text below as a natural
+                lead-in to additional
+                content. This content is a little bit longer.</p> -->
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <!-- 좋아요! -->
+
+        <div class="card text-center" style="border:none">
+            <a href="#" onclick="ClickHeart()" style="text-decoration: none;">❤️</a>
+            <span id="heart-count">좋아요 개수</span>
+        </div>
+
+
+        <!-- 댓글 작성 시작 -->
+        <div id="comment_area">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">댓글 작성</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" onclick="save_comment()">등록</button>
+        </div>
+        <!-- 댓글 작성 끝 -->
+        <!-- <div class="card text-center">
+            <h2>댓글 보러가기(0)</h2>
+        </div> -->
+
+
+        <div id="comment-list" class="card text-center">
+
+
+            <!-- 댓글 목록 자리 -->
+
+
+        </div>
+    </div>
+
+
+    <!-- 하단 푸터 시작-->
+
+    <div id="footer-container"></div>
+
+    <!-- 하단 푸터 끝-->
+
+</body>
+
+</html>

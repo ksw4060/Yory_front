@@ -1,3 +1,5 @@
+const proxy = "http://127.0.0.1:8000"
+
 // 입력 받은 값을 login 함수로 전달하는 함수
 function handleLogin(event) {
     event.preventDefault(); // 제출 버튼을 눌렀을 때 새로고침 방지
@@ -16,7 +18,7 @@ async function login(email, password) {
             password: password
         };
 
-        const response = await fetch('http://127.0.0.1:8000/users/login/', {
+        const response = await fetch(`${proxy}/users/login/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,12 +32,12 @@ async function login(email, password) {
 
         // 반환 값을 json으로 변환 후 각 토큰할당
         const data = await response.json();
-        const accessToken = data.access_token;
-        const refreshToken = data.refresh_token;
+        const accessToken = data.access;
+        const refreshToken = data.refresh;
 
         // 로컬스토리지에 각 토큰 저장
-        localStorage.setItem('access_token', accessToken);
-        localStorage.setItem('refresh_token', refreshToken);
+        localStorage.setItem('access', accessToken);
+        localStorage.setItem('refresh', refreshToken);
 
         console.log('로그인 성공!');
 
@@ -47,5 +49,5 @@ async function login(email, password) {
 }
 // html에서 login_form이라는 이름을 가진 태그 할당
 // submit이라는 버튼이 클릭되면 handleLogin 함수 실행
-const loginForm = document.getElementById('login_form');
+const loginForm = document.getElementById("login-form");
 loginForm.addEventListener('submit', handleLogin);
