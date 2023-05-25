@@ -1,12 +1,15 @@
 .login-form {
     border: 1px solid #FFEED9;
     border-radius: 10px;
-    width: 70vw;
-    max-width: 500px;
+    max-width: 800px;
+
     height: auto;
+    width: 80%;
+
     margin: 10% auto;
     padding: 20px;
-    background-color: #a6a6a6;
+
+    background-color: #ae8106;
 }
 
 .login-form-control {
@@ -29,7 +32,7 @@
 }
 
 .login-form .login-button button {
-    background-color: rgb(202, 255, 202);
+    background-color: rgb(25, 107, 31);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -37,7 +40,7 @@
 }
 
 .login-form button {
-    background-color: rgb(220, 226, 255);
+    background-color: rgb(25, 107, 31);
     border: none;
     border-radius: 5px;
     padding: 5px 20px;
