@@ -48,3 +48,13 @@ export async function viewArticleList() {
         }
     }
 }
+
+
+export function loadNavMenu() {
+
+    const mybutton = document.getElementById("main_mybutton")
+
+    if (localStorage.getItem("access") == null) {
+        mybutton.remove()
+    }
+}
