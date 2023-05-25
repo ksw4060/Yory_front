@@ -29,12 +29,50 @@
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
+            position: relative;
 
             background-image: url("https://i.ibb.co/2hDdks8/mediterranean-cuisine-2378758.jpg");
             background-position: center;
             background-size: cover;
 
             height: 700px;
+
+        }
+
+        .maincontainer {
+
+            margin-left: 0px auto;
+            margin-right: 0px auto;
+            margin-top: 0px auto;
+            margin-bottom: 0px auto;
+
+            position: relative;
+
+            height: 70%;
+            width: 70%;
+
+            background-color: red;
+        }
+
+        .버튼묶음 {
+            margin: 0px auto;
+
+            background-color: yellow;
+            height: 70%;
+            width: 70%;
+            justify-content: center;
+        }
+
+        .col-6 {
+            margin-left: 0px auto;
+            margin-right: 0px auto;
+            margin-top: 0px auto;
+            margin-bottom: 0px auto;
+
+            height: 70%;
+            width: 70%;
+
+            text-align: center;
 
         }
     </style>
@@ -50,9 +88,39 @@
     <div id="navbar-container"></div>
     <!-- 상단 네비게이션바 끝-->
 
+    <!-- 메인페이지 사진-->
+    <div class="mytitle">
+        <div class="row" style="width: 100%; height: 100%;">
+            <div class="col-6" text-align="center">
+                <button type="button" class="button alt" style="
+                    width: 80%; 
+                    height: 50%; 
+                    margin:auto; 
+                    display:block; 
+                    margin-top: 25%; 
+                    color: black; 
+                    font-size: 300%; 
+                    background-color:rgba(240, 255, 255, 0.196)
+                    ">나의 레시피<br>자랑하기</button>
+            </div>
+            <div class="col-6" text-align="center">
+                <button type="button" class="button alt" style="
+                    width: 80%; 
+                    height: 50%; 
+                    margin:auto; 
+                    display:block; 
+                    margin-top: 25%; 
+                    color: black; 
+                    font-size: 300%; 
+                    background-color:rgba(240, 255, 255, 0.196)
+                    ">오늘 뭐 먹지?<br>요리킹조리킹AI에게<br>물어보기</button>
+            </div>
+        </div>
+    </div>
+    <!-- 메인페이지 사진 끝-->
 
-    <div class="mytitle"></div>
 
+    <!-- 게시글 네비 시작 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -98,18 +166,19 @@
             </div>
         </div>
     </nav>
+    <!-- 게시글 네비 끝 -->
 
+    <!-- 게시글 추가 -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="mycards">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
                     id="article-list">
-
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- 게시글 끝 -->
 
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>

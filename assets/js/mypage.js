@@ -3,6 +3,8 @@ import { logout } from './logout'   // 회원탈퇴 시 로그아웃을 위해 �
 const proxy = "http://127.0.0.1:8000"
 let userId = null
 
+const profileName = document.getElementById('mypage_nickname');
+
 // 유저정보를 요청하는 함수
 async function fetchUserProfile() {
     try {
@@ -43,6 +45,7 @@ function loadMyPage(userProfile) {
     // 추후 html에 있는 id로 교체해야함
     // 밑에 요소들이 백엔드에서 넘어올 수 있는지 확인해야 함
     const profileElement = document.getElementById('profile');
+    profileName = profileElement.nickname
     profileElement.innerHTML = `
     <p>닉네임: ${userProfile.nickname}</p>
     <p>이메일: ${userProfile.email}</p>

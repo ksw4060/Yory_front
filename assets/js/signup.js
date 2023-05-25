@@ -4,12 +4,12 @@ const proxy = "http://127.0.0.1:8000"
 function handleSignup(event) {
     event.preventDefault(); // 제출 버튼을 눌렀을 때 새로고침 방지
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const password2 = document.getElementById('password2').value;
-    const nickname = document.getElementById('nickname').value;
-    const image = document.getElementById('image').files[0];
-    const bio = document.getElementById('bio').value;
+    const email = document.getElementById('signup_email').value;
+    const password = document.getElementById('signup_password').value;
+    const password2 = document.getElementById('signup_password2').value;
+    const nickname = document.getElementById('signup_nickname').value;
+    const image = document.getElementById('signup_image').files[0];
+    const bio = document.getElementById('signup_bio').value;
 
     // FormData를 사용하면 header에 "application/json"을 담지 않아도 됨
     const formData = new FormData();
@@ -18,7 +18,7 @@ function handleSignup(event) {
     formData.append('nickname', nickname);
     formData.append('bio', bio);
     formData.append('image', image);
-
+    console.log(email, password, password2, nickname, bio, image)
     if (password !== password2) {
         console.error('비밀번호가 일치하지 않습니다.');
         return;
@@ -49,4 +49,5 @@ async function signUp(formData) {
 }
 
 const form = document.getElementById('signup_form');    // signup_form이라는 요소를 찾아 form에 할당
-form.addEventListener('submit', handleSignup);  // 이벤트 발생 시 handleSignup함수 실행
+const loginButton = document.getElementById("signup-button");
+loginButton.addEventListener('click', handleSignup);
