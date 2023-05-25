@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>조리킹 AI</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- JS -->
+    <script src="/assets/js/nav01.js"></script>
+
+    <script src="/assets/js/footer.js"></script>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
+    <div class="title">
+        <h1>조리킹 AI</h1>
+        <h3>조리킹 AI가 냉장고 속 재료를 파악해 요리를 추천해드립니다!</h3>
+    </div>
+    <form>
+        <div>
+            <label for="chooseFile">
+                이미지 업로드
+            </label>
+        </div>
+        <input type="file" id="chooseFile" accept="image/*">
+        <div>
+            <button id="submitButton">SUBMIT</button>
+        </div>
+    </form>
+    <hr>
+    <div id="joriking"></div>
+
+
+
+    <!-- 하단 푸터 시작-->
+    <div id="footer-container"></div>
+    <!-- 하단 푸터 끝-->
+    <script src="/assets/js/joriking.js"></script>
+</body>
+
+</html>
