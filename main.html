@@ -18,6 +18,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/nav02.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/load_main.js" type="module"></script>
 
@@ -105,7 +106,7 @@
                     ">나의 레시피<br>자랑하기</button>
             </div>
             <div class="col-6" text-align="center">
-                <button type="button" class="button alt" style="
+                <button type="button" class="button alt" onclick="location.href='joriking.html'" style="
                     width: 80%; 
                     height: 70%; 
                     margin:auto; 
@@ -124,7 +125,7 @@
     <!-- 게시글 네비 시작 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">전체 보기</a>
+            <a class="navbar-brand" href="main.html">전체 보기</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -148,7 +149,8 @@
                         <a class="nav-link" href="#">그 외</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-success" id="main_mybutton">나의 게시글</button>
+                        <button type="button" class="btn btn-outline-success" id="main_mybutton"
+                            onclick="viewMyArticleList()">나의 게시글</button>
                     </li>
                 </ul>
             </div>
@@ -169,5 +171,6 @@
     <!-- 하단 푸터 끝-->
 
 </body>
+<script src="/assets/js/nav02.js"></script>
 
 </html>
