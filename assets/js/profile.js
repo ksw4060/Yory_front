@@ -7,7 +7,7 @@ function setThumbnail(event) {
         img.setAttribute("src", event.target.result);
 
         // 썸네일 크기 조절
-        img.style.width = "550px"; // 너비 500px로 설정
+        img.style.width = "550px"; // 너비 550px로 설정
         img.style.height = "auto"; // 높이 자동 설정
         document
             .querySelector("#imgthumbnail")
