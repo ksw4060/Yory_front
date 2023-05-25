@@ -1,3 +1,4 @@
+console.log(1)
 const proxy = "http://127.0.0.1:8000"
 let userProfile = null
 
@@ -5,11 +6,11 @@ let userProfile = null
 const userImage = document.getElementById('userImage');
 const userNickName = document.getElementById('userNickName');
 
-// 모달창
-const modal = document.getElementById('modal');
-const modalUserImage = document.getElementById('modalUserImage');
-const modalUserNickName = document.getElementById('modalUserNickName');
-const modalClose = document.getElementsByClassName('close')[0];
+// // 모달창
+// const modal = document.getElementById('modal');
+// const modalUserImage = document.getElementById('modalUserImage');
+// const modalUserNickName = document.getElementById('modalUserNickName');
+// const modalClose = document.getElementsByClassName('close')[0];
 
 // 로그인 상태 체크 함수
 function isLoggedIn() {
@@ -24,13 +25,12 @@ function updateUserProfile(image, nickname) {
     userNickName.textContent = nickname;
 }
 
-// 모달 업데이트 함수
-function updateModal(image, nickname) {
-    modalUserImage.src = image;
-    modalUserNickName.textContent = nickname;
-}
+// // 모달 업데이트 함수
+// function updateModal(nickname) {
+//     modalUserNickName.textContent = nickname;
+// }
 
-// 사용자 정보 가져오기 (비동기 함수)
+// 사용자 정보 가져오기
 async function fetchUserProfile() {
     try {
         // 로컬스토리지에서 엑세스 토큰 가져옴
@@ -48,7 +48,7 @@ async function fetchUserProfile() {
             throw new Error('프로필 정보를 가져오는데 실패하였습니다.');
         }
 
-        // 요청성공하면 받은데이터를 json으로 변환 후 함수로 전달
+        // 요청성공하면 받은데이터를 json으로 변환
         userProfile = await response.json();
 
         // 백엔드에서 받아온 사용자 정보를 업데이트
@@ -63,6 +63,7 @@ async function fetchUserProfile() {
 
 // 페이지 로드 시 로그인 상태 체크하여 UI 업데이트
 window.addEventListener('load', async function () {
+    console.log(1)
     if (isLoggedIn()) {
         // 로그인 상태일 경우
         await fetchUserProfile(); // 사용자 정보 가져오기
@@ -73,27 +74,31 @@ window.addEventListener('load', async function () {
     }
 });
 
-// 사용자 이미지 및 이름 클릭 이벤트 처리 (모달 열기)
-userImage.addEventListener('click', function () {
-    // 모달에 사용자 이미지와 이름을 업데이트
-    const imageUrl = userImage.src;
-    const nickName = userNickName.textContent;
-    updateModal(imageUrl, nickName);
 
-    // 모달 열기
-    modal.style.display = 'block';
-});
 
-// 모달 닫기 버튼 클릭 이벤트 처리 (모달 닫기)
-modalClose.addEventListener('click', function () {
-    // 모달 닫기
-    modal.style.display = 'none';
-});
 
-// 모달 외부 클릭 이벤트 처리 (모달 닫기)
-window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-        // 모달 외부를 클릭한 경우에만 모달 닫기
-        modal.style.display = 'none';
-    }
-});
+
+// // 사용자 이미지 및 이름 클릭 이벤트 처리 (모달 열기)
+// userImage.addEventListener('click', function () {
+//     // 모달에 사용자 이미지와 이름을 업데이트
+//     const imageUrl = userImage.src;
+//     const nickName = userNickName.textContent;
+//     updateModal(imageUrl, nickName);
+
+//     // 모달 열기
+//     modal.style.display = 'block';
+// });
+
+// // 모달 닫기 버튼 클릭 이벤트 처리 (모달 닫기)
+// modalClose.addEventListener('click', function () {
+//     // 모달 닫기
+//     modal.style.display = 'none';
+// });
+
+// // 모달 외부 클릭 이벤트 처리 (모달 닫기)
+// window.addEventListener('click', function (event) {
+//     if (event.target === modal) {
+//         // 모달 외부를 클릭한 경우에만 모달 닫기
+//         modal.style.display = 'none';
+//     }
+// });

@@ -315,7 +315,8 @@ table {
 .container {
     margin: 0 auto;
     max-width: 100%;
-    width: 1400px;
+    width: 400px;
+
 }
 
 @media screen and (max-width: 1680px) {
@@ -2127,6 +2128,7 @@ ul.menu li:first-child {
 #nav ul {
     list-style: none;
     padding-left: 0;
+
 }
 
 #nav ul li {
@@ -2161,6 +2163,7 @@ ul.menu li:first-child {
 #nav ul li.active a,
 #nav ul li.active span {
     background: #fff;
+
 }
 
 #nav ul li.current a {
@@ -2181,12 +2184,16 @@ ul.menu li:first-child {
     margin-left: -1px;
     list-style: none;
     padding-left: 0;
+
 }
 
 .dropotron li {
     border-top: solid 1px #eee;
     line-height: 3em;
     padding-left: 0;
+
+    right: 50px;
+    top: 30px;
 }
 
 .dropotron li:first-child {
