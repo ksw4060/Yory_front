@@ -18,6 +18,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/nav02.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/load_main.js" type="module"></script>
 
@@ -105,14 +106,14 @@
                     ">나의 레시피<br>자랑하기</button>
             </div>
             <div class="col-6" text-align="center">
-                <button type="button" class="button alt" style="
-                    width: 80%;
-                    height: 70%;
-                    margin:auto;
-                    display:block;
-                    margin-top: 30%;
-                    color: black;
-                    font-size: 300%;
+                <button type="button" class="button alt" onclick="location.href='joriking.html'" style="
+                    width: 80%; 
+                    height: 70%; 
+                    margin:auto; 
+                    display:block; 
+                    margin-top: 30%; 
+                    color: black; 
+                    font-size: 300%; 
                     background-color:rgba(240, 255, 255, 0.196)
                     ">오늘 뭐 먹지?<br>요리킹조리킹AI에게<br>물어보기</button>
             </div>
@@ -124,7 +125,7 @@
     <!-- 게시글 네비 시작 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="main.html">전체 보기</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -133,37 +134,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">전체글 보기</a>
+                        <a class="nav-link" onclick="viewCategorizedArticleList(1)" style="cursor: pointer">한식</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">사용자기호</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            나라별
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li class="dropdown-item"><button onclick="CatCategory()" type="button"
-                                    class="nav-link btn me-2 btn_org">한식</button>
-                            </li>
-                            <li><a class="dropdown-item" href="#">양식</a></li>
-                            <li><a class="dropdown-item" href="#">중식</a></li>
-                            <li><a class="dropdown-item" href="#">일식</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">그 외</a></li>
-                        </ul>
+                        <a class="nav-link" onclick="viewCategorizedArticleList(2)" style="cursor: pointer">중식</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" onclick="viewCategorizedArticleList(3)" style="cursor: pointer">일식</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="viewCategorizedArticleList(4)" style="cursor: pointer">양식</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="viewCategorizedArticleList(5)" style="cursor: pointer">그 외</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-success" id="main_mybutton"
+                            onclick="viewMyArticleList()">나의 게시글</button>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -172,57 +161,7 @@
     <!-- 게시글 목록 시작 -->
     <div class="mycards">
         <div class="row" id="article-list" style="margin: 0 3% 0 3%">
-
-            <!-- 카드 꽉 찾을 때 예시 -->
-            <div class="col-4">
-                <div class="card h-100">
-                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural
-                            lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card h-100">
-                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural
-                            lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card h-100">
-                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural
-                            lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 카드 자리 남을 때 예시 -->
-            <div class="col-4">
-                <div class="card h-100">
-                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural
-                            lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-
+            <!-- 게시글 카드들 리스트 들어가는 자리 -->
         </div>
     </div>
     <!-- 게시글 목록 끝 -->
@@ -232,5 +171,6 @@
     <!-- 하단 푸터 끝-->
 
 </body>
+<script src="/assets/js/nav02.js"></script>
 
 </html>
