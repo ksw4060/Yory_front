@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="assets/css/main.css" />
-  
+
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -32,7 +32,7 @@
         <!-- 프로필 시작 -->
         <div class="container">
 
-            <h2 id="mypage_nickname" justify_align="center" style="margin: 2%">{nickname}님의 프로필</h2>
+            <h2 id="mypage_profile_nickname" justify_align="center" style="margin: 2%">{nickname}님의 프로필</h2>
             <section class="box feature-ji">
                 <div class="row gtr-200" style="margin: 1%">
 
@@ -43,7 +43,7 @@
                         </a>
                     </div>
 
-                  
+
                     <div class="col-8">
                         <ul>
                             <li id="mypage_nickname" style="list-style: none; font-size: x-large;">닉네임: {nickname}</li>
@@ -53,17 +53,18 @@
                             <li id="mypage_preference" style="list-style: none; font-size: x-large;">좋아하는 음식:
                                 {preference}
                             </li>
-                            <li id="mypage_follow"
+                            <li id="mypage_follower"
                                 style="float: left; width: 50%; list-style: none; font-size: x-large;">
                                 팔로워:
                                 {follower_count}명</li>
-                            <li id="mypage_follow" style="list-style: none; font-size: x-large;">팔로잉: {following_count}명
+                            <li id="mypage_following" style="list-style: none; font-size: x-large;">팔로잉:
+                                {following_count}명
                             </li>
                             <li id="mypage_bio" style="list-style: none; font-size: x-large;">자기소개: {bio}</li>
                         </ul>
                     </div>
                     <div style="margin-top: -5%; margin-bottom :5%;">
-                        <button type="button" class="button alt"
+                        <button type="button" class="button alt" id="user_delete"
                             style="float: right; margin:0 15px 0 15px; color: crimson;">탈퇴</button>
                         <button type=" button" class="button alt" style="float: right;">수정</button>
                     </div>
@@ -78,7 +79,7 @@
             <div id="content">
                 <div class="row">
 
-                    <div class="col-6">
+                    <div class="col-6" id="follower-container">
                         <h2>Followers</h2>
 
                         <!-- follower list -->
@@ -141,7 +142,7 @@
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>
     <!-- 하단 푸터 끝-->
-  
+
     <script src="/assets/js/mypage.js"></script>
 </body>
 

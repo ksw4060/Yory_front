@@ -1,3 +1,5 @@
+const proxy = 'http://127.0.0.1:8000';  // 게시글 API 엔드포인트
+
 // 글 상세보기
 
 window.onload = () => {
@@ -12,7 +14,7 @@ const article_id = new URLSearchParams(window.location.search).get('id');
 async function ArticleDetail(article_id) {
 
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
+    const response = await fetch(`${proxy}/articles/${article_id}`, {
         method: 'GET',
     })
 
@@ -27,18 +29,18 @@ async function ArticleDetail(article_id) {
     const article_updated_at = document.querySelector('#article-updated-at');
     const article_content = document.querySelector('#article-content');
     //백 이미지 링크를 통해 가져오도록 햇습니댜
-    const article_img_url = `${backend_base_url}${response_json.article_img}`;
+    const article_img_url = `${proxy}${response_json.image}`;
     const article_img_element = document.getElementById("article_img")
     // console.log(article_img_element)
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
     // detail_product_img.setAttribute('src', detail_product_img_url)
     category.innerText = response_json.category
-    author.innerText = response_json.user
-    article_title.innerText = response_json.article_title
-    article_created_at.innerText = response_json.article_created_at
-    article_updated_at.innerText = response_json.article_updated_at
-    article_content.innerText = response_json.article_content
+    author.innerText = response_json.user.nickname
+    article_title.innerText = response_json.title
+    article_created_at.innerText = response_json.created_at
+    article_updated_at.innerText = response_json.updated_at
+    article_content.innerText = response_json.content
     //이미지 스크린에 아티클 이미지 url들을 각각 불러오도록 했습니댜
     article_img_element.setAttribute("src", article_img_url)
 
@@ -54,7 +56,7 @@ function redirectUpdatePage() {
 
 async function ArticleDelete() {
     if (confirm("삭제하시겠습니까?")) {
-        const response = await fetch(`${backend_base_url}/articles/${article_id}`, {
+        const response = await fetch(`${proxy}/articles/${article_id}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("access"),
                 'content-type': 'application/json',
@@ -78,14 +80,14 @@ async function save_comment() {
 
     const token = localStorage.getItem("access")
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`, {
+    const response = await fetch(`${proxy}/articles/${article_id}/comments/`, {
         headers: {
             "content-type": "application/json",
             "Authorization": "Bearer " + token,
         },
         method: 'POST',
         body: JSON.stringify({
-            "comment": comment,
+            "content": comment,
 
         })
     })
@@ -102,7 +104,7 @@ async function save_comment() {
 // 댓글 불러오기
 
 async function loadComments(article_id) {
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/`);
+    const response = await fetch(`${proxy}/articles/${article_id}/comments/`);
     const comments = await response.json();
     console.log(comments)
 
@@ -114,7 +116,7 @@ async function loadComments(article_id) {
         commentList.insertAdjacentHTML('beforeend', `
 
         <div  class="card-header">
-                <a>${comment.user}</a>
+                <a>${comment.user.nickname}</a>
             </div>
             <div id="comment-${comment.id}" class="card-body" style="max-width: 1000px;">
                 <div class="row g-5">
@@ -126,14 +128,14 @@ async function loadComments(article_id) {
                     <!-- 댓글 제목과 내용 입력-->
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p class="card-text" id="comment-content-${comment.id}">${comment.comment}</p>
+                            <p class="card-text" id="comment-content-${comment.id}">${comment.content}</p>
 
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a href="#" onclick = "editComment(${comment.id})" class="btn btn-secondary btn-sm me-md-2">댓글수정</a>
                             <a href="#" onclick = "CommentDelete(${comment.id})" class="btn btn-secondary btn-sm">댓글삭제</a>
                         </div>
-                        <p class="card-text"><small class="text-muted">${comment.comment_created_at}</small></p>
+                        <p class="card-text"><small class="text-muted">${comment.created_at}</small></p>
                     </div>
                 </div>
             </div>
@@ -175,14 +177,14 @@ async function editComment(comment_id) {
 // 댓글 수정 저장하기
 async function updateComment(commentId, newContent) {
     const token = localStorage.getItem('access');
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${commentId}/`, {
+    const response = await fetch(`${proxy}/articles/comments/${commentId}/`, {
         headers: {
             'content-type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
         method: 'PUT',
         body: JSON.stringify({
-            'comment': newContent,
+            'content': newContent,
         }),
     });
 
@@ -202,7 +204,7 @@ async function updateComment(commentId, newContent) {
 async function CommentDelete(comment_id) {
 
     if (confirm("삭제하시겠습니까?")) {
-        const response = await fetch(`${backend_base_url}/articles/${article_id}/comment/${comment_id}`, {
+        const response = await fetch(`${proxy}/articles/comments/${comment_id}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("access"),
                 'content-type': 'application/json',
@@ -221,7 +223,7 @@ async function CommentDelete(comment_id) {
 // 좋아요 누르기
 async function ClickHeart() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`, {
+    const response = await fetch(`${proxy}/articles/${article_id}/like/`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
             'content-type': 'application/json',
@@ -238,7 +240,7 @@ async function ClickHeart() {
 // 좋아요 갯수
 async function CountHeart() {
 
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/hearts/`, {
+    const response = await fetch(`${proxy}/articles/${article_id}/`, {
         headers: {
 
             'content-type': 'application/json',
@@ -246,38 +248,5 @@ async function CountHeart() {
         method: 'GET',
     })
     response_json = await response.json()
-    document.getElementById('heart-count').innerText = response_json.hearts
-}
-
-
-// 북마크 누르기
-async function ClickBookmark() {
-
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`, {
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access"),
-            'content-type': 'application/json',
-        },
-        method: 'POST',
-    })
-    if (response.status === 200) {
-        alert("북마크")
-        location.reload();
-    }
-}
-
-
-// 북마크 갯수
-async function CountBookmark() {
-
-    const response = await fetch(`${backend_base_url}/articles/${article_id}/bookmarks/`, {
-        headers: {
-
-            'content-type': 'application/json',
-        },
-        method: 'GET',
-    })
-    response_json = await response.json()
-    console.log(response_json.bookmarks)
-    document.getElementById('bookmark-count').innerText = response_json.bookmarks
+    document.getElementById('heart-count').innerText = response_json.like_count
 }

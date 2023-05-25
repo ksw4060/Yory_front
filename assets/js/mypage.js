@@ -1,9 +1,16 @@
-import { logout } from './logout'   // 회원탈퇴 시 로그아웃을 위해 가져옴
 
 const proxy = "http://127.0.0.1:8000"
 let userId = null
 
-const profileName = document.getElementById('mypage_nickname');
+const mypageProfileNickName = document.getElementById('mypage_profile_nickname');
+const profileImage = document.getElementById('profile_image');
+const profileNickName = document.getElementById('mypage_nickname');
+const profileEmail = document.getElementById('mypage_email');
+const profileArticleCount = document.getElementById('mypage_article_count');
+const profilePreference = document.getElementById('mypage_preference');
+const profileFollower = document.getElementById('mypage_follower');
+const profileFollowing = document.getElementById('mypage_following');
+const profilebio = document.getElementById('mypage_bio');
 
 // 유저정보를 요청하는 함수
 async function fetchUserProfile() {
@@ -36,94 +43,80 @@ async function fetchUserProfile() {
 
 // 반환된 데이터를 가지고 마이페이지에 넣어주는 함수
 function loadMyPage(userProfile) {
-    // 추후 html에 있는 id로 교체해야함
-    const profileImage = document.getElementById('profile_image');
+    console.log(userProfile)
+    console.log(userProfile.followers)
     // 프로필 사진
     profileImage.src = proxy + userProfile.image;
 
     // 프로필 박스에 넣는 데이터들
     // 추후 html에 있는 id로 교체해야함
     // 밑에 요소들이 백엔드에서 넘어올 수 있는지 확인해야 함
-    const profileElement = document.getElementById('profile');
-    profileName = profileElement.nickname
-    profileElement.innerHTML = `
-    <p>닉네임: ${userProfile.nickname}</p>
-    <p>이메일: ${userProfile.email}</p>
-    <p>자기 소개: ${userProfile.bio}</p>
-    <p>작성한 게시글 수: ${userProfile.article_count} 개</p>  
-    <p>팔로워: ${userProfile.follow_count} 명</p>
-    <p>팔로잉: ${userProfile.following_count} 명</p>
-    <p>좋아하는 음식: ${userProfile.likefood}</p>
-    `
+    mypageProfileNickName.textContent = userProfile.nickname + '님의 프로필'
+    profileNickName.textContent = '닉네임 : ' + userProfile.nickname
+    profileEmail.textContent = '이메일 : ' + userProfile.email
+    profileArticleCount.textContent = '작성한 게시글 수 : ' + userProfile.article_count
+    profilePreference.textContent = '좋아하는 음식 : ' + userProfile.preference
+    profileFollower.textContent = '팔로워 : ' + userProfile.follower_count + '명'
+    profileFollowing.textContent = '팔로워 : ' + userProfile.following_count + '명'
+    profilebio.textContent = '자기소개 : ' + userProfile.bio
 }
 
 // 팔로워, 팔로잉 유저정보 함수
 // html과 해당 id 대조 후 변경 필요
-async function loadFollowPage(userProfile) {
-    const followerElement = document.getElementById('follower');
-    const followingElement = document.getElementById('following');
+function loadFollowPage(userProfile) {
+    const followerElement = document.getElementById('ji_follower-container');
+    const followingElement = document.getElementById('ji_following-container');
+
+    followerElement.innerHTML = "";
+    followingElement.innerHTML = "";
 
     // 팔로워 표시, 받은 id값을 for문으로 하나씩 백엔드에 요청
-    for (const followerId of userProfile.followers) {
-        try {
-            const response = await fetch(`${proxy}/users/${followerId}/`, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`팔로워 정보를 가져오는데 실패하였습니다. (ID: ${followerId})`);
-            }
-
-            // json으로 변환
-            const followerData = await response.json();
-
-            // 유저하나당 div하나씩 할당
-            const followerContainer = document.createElement('div');
-
-            // 팔로워 이미지 넣는 부분인데, 이미지 div를 따로 만드신건지 확인 필요
-            const followerProfileImage = document.createElement('img');
-            followerProfileImage.src = proxy + followerData.image;
-            followerContainer.appendChild(followerProfileImage);
-
-            // 유저 이름 추가
-            const followerName = document.createElement('p');
-            followerName.textContent = followerData.name;
-            followerContainer.appendChild(followerName);
-
-            // 만들어진 div를 html에 만들어진 div에 추가
-            followerElement.appendChild(followerContainer);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    for (const follower of userProfile.followers) {
+        console.log(follower)
+        // 유저하나당 div하나씩 할당
+        followerElement.innerHTML += `
+        <section class="box feature-ji">
+            <div class="row">
+                <div class="col-4" style="margin-bottom: -4%;">
+                    <a style="cursor: pointer;">
+                        <div class="image featured-ji">
+                            <img src="${proxy}/media/${follower.image}" alt="" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-8">
+                    <h3 style="margin-bottom: 0;">${follower.nickname}</h3>
+                    <p style="margin-bottom: 10%;">${follower.email}</p>
+                    <button type="button" class="button alt"
+                        style="float: right; margin:3% 5% 5% 0;">팔로우</button>
+                </div>
+            </div>
+        </section>
+        `
     }
 
-    // 팔로잉 표시
-    for (const followingId of userProfile.followings) {
-        try {
-            const response = await fetch(`${proxy}/users/${followingId}/`, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`사용자 정보를 가져오는데 실패하였습니다. (ID: ${followingId})`);
-            }
-
-            const followingData = await response.json();
-
-            const followingContainer = document.createElement('div');
-
-            const followingProfileImage = document.createElement('img');
-            followingProfileImage.src = proxy + followingData.image;
-            followingContainer.appendChild(followingProfileImage);
-
-            const followingName = document.createElement('p');
-            followingName.textContent = followingData.name;
-            followingContainer.appendChild(followingName);
-
-            followingElement.appendChild(followingContainer);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    for (const following of userProfile.followings) {
+        console.log(following)
+        // 유저하나당 div하나씩 할당
+        followingElement.innerHTML += `
+        <section class="box feature-ji">
+            <div class="row">
+                <div class="col-4" style="margin-bottom: -4%;">
+                    <a style="cursor: pointer;">
+                        <div class="image featured-ji">
+                            <img src="${proxy}/media/${following.image}" alt="" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-8">
+                    <h3 style="margin-bottom: 0;">${following.nickname}</h3>
+                    <p style="margin-bottom: 10%;">${following.email}</p>
+                    <button type="button" class="button alt"
+                        style="float: right; margin:3% 5% 5% 0;">팔로우</button>
+                </div>
+            </div>
+        </section>
+        `
     }
 }
 
@@ -161,7 +154,13 @@ async function deleteUser() {
     }
 }
 
+function logout() {
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+    window.location.href = 'login.html';
+}
+
 // js파일 로드 시 바로 함수 실행
 fetchUserProfile();
-const deleteButton = document.getElementById('delete');
+const deleteButton = document.getElementById('user_delete');
 deleteButton.addEventListener('click', deleteUser);

@@ -17,7 +17,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="/assets/js/nav01.js"></script>
-    <script src="/assets/js/footer.js"></script>>
+    <script src="/assets/js/footer.js"></script>
 </head>
 
 <body>
@@ -36,10 +36,19 @@
                     <input name="gwTitle" id="gwTitle" type="text" placeholder="글 제목을 입력하세요">
                 </div>
                 <div class="gw-write-title">
-                    <input name="gwTitle" id="gwTitle" type="text" placeholder="글 제목을 입력하세요">
+                    <form id="imgForm">
+                        <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
                 </div>
-                <div class="gw-write-title">
-                    <input name="gwTitle" id="gwTitle" type="text" placeholder="글 제목을 입력하세요">
+                <div class="gw-write-title" style="width: 300px; margin-top: 10px;">
+                    <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+                    <select class="form-select" id="category">
+                        <option selected>--선택--</option>
+                        <option value="korean">한식</option>
+                        <option value="america">양식</option>
+                        <option value="china">중식</option>
+                        <option value="japan">일식</option>
+                        <option value="etc">그외</option>
+                    </select>
                 </div>
                 <div>
                     <div id="summernote"></div>
@@ -72,8 +81,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
+                ['insert', ['link', 'picture']]
             ],
         });
 
