@@ -1,0 +1,132 @@
+.dropdown-menu {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+
+    right: 20%;
+
+    margin-top: 20%;
+    margin-bottom: 10%;
+
+    box-shadow: 0px 10px 8px 0px gray;
+
+}
+
+.dropdown-body {
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+    background-color: rgb(255, 255, 255);
+
+    text-align: center;
+
+    margin: 0px auto;
+    margin-top: 5%;
+    padding-right: 0%;
+    padding-left: 0%;
+
+    box-shadow: 0px 10px 8px 0px gray;
+
+
+}
+
+input[id="menuicon"] {
+    /* 오른쪽 상단 목차 아이콘 네모박스 틀 */
+    display: none;
+}
+
+input[id="menuicon"]+label {
+    /* 네모 박스 크기모양 및 위치 */
+    display: block;
+    width: 3%;
+    height: 2.5%;
+    position: fixed;
+    /* 위치 고정 */
+    right: 1%;
+    /* 체크하기 전 라벨의 위치 */
+    top: calc(15% - 25px);
+    transition: all .35s;
+    cursor: pointer;
+    /* 위에 올렸을 때 커서가 포인터로 보이게 */
+    margin: 20px;
+    /* 상하좌우 바깥 여백이 20픽셀 */
+}
+
+input[id="menuicon"]:checked+label {
+    z-index: 2;
+    /* 위,아래 덮는 순서 숫자가 크면 덮습니다 */
+    right: 15%;
+    /* 라벨을 체크했을 때 위치가 오른쪽 기준 15% */
+}
+
+input[id="menuicon"]+label span {
+    /* span은 막대기를 의미, span이 총 3개가 있는데 그 세개를 모두 지칭 */
+    display: block;
+    /*
+    일반적으로 설정하지 않아도 div가 갖게되는 기본값이다. (태그에 따라 기본값이 다를 수 있다.)
+    기본적으로 width 가 자신의 컨테이너의 100% 가 되게끔 한다.
+    쉽게 말하자면, 가로 한 줄을 다 차지하게 된다. */
+    position: absolute;
+    width: 70%;
+    height: 18%;
+    border-radius: 30px;
+    background: #000;
+    transition: all .35s;
+}
+
+/* span 한줄 한줄의 위치를 의미. */
+input[id="menuicon"]+label span:nth-child(1) {
+    top: 0;
+}
+
+input[id="menuicon"]+label span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input[id="menuicon"]+label span:nth-child(3) {
+    bottom: 0;
+}
+
+/* span이 체크되었을 때에 위치 */
+input[id="menuicon"]:checked+label span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+input[id="menuicon"]:checked+label span:nth-child(2) {
+    opacity: 0;
+}
+
+input[id="menuicon"]:checked+label span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+
+
+.sidebar {
+    /* 사이드바의 위치와 속성 */
+    width: 17%;
+    height: 300%;
+    background-color: #cbbdaf;
+    position: fixed;
+    top: 0;
+    right: -17%;
+    z-index: 1;
+    transition: all .35s;
+}
+
+.sidetop {
+    text-align: center;
+    padding-top: 10%;
+}
+
+input[id="menuicon"]:checked+label+div {
+    /* 사이드바랑 딸려 나오는 애 */
+    right: 0;
+}
