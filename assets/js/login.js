@@ -4,8 +4,8 @@ const proxy = "http://127.0.0.1:8000"
 function handleLogin(event) {
     event.preventDefault(); // 제출 버튼을 눌렀을 때 새로고침 방지
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('login_email').value;
+    const password = document.getElementById('login_password').value;
 
     login(email, password);
 }
@@ -50,4 +50,6 @@ async function login(email, password) {
 // html에서 login_form이라는 이름을 가진 태그 할당
 // submit이라는 버튼이 클릭되면 handleLogin 함수 실행
 const loginForm = document.getElementById("login-form");
-loginForm.addEventListener('submit', handleLogin);
+const loginButton = document.getElementById("login-button");
+loginButton.addEventListener('click', handleLogin);
+
