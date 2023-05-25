@@ -43,8 +43,6 @@ async function fetchUserProfile() {
 
 // 반환된 데이터를 가지고 마이페이지에 넣어주는 함수
 function loadMyPage(userProfile) {
-    console.log(userProfile)
-    console.log(userProfile.followers)
     // 프로필 사진
     profileImage.src = proxy + userProfile.image;
 
@@ -72,7 +70,6 @@ function loadFollowPage(userProfile) {
 
     // 팔로워 표시, 받은 id값을 for문으로 하나씩 백엔드에 요청
     for (const follower of userProfile.followers) {
-        console.log(follower)
         // 유저하나당 div하나씩 할당
         followerElement.innerHTML += `
         <section class="box feature-ji">
@@ -88,7 +85,7 @@ function loadFollowPage(userProfile) {
                     <h3 style="margin-bottom: 0;">${follower.nickname}</h3>
                     <p style="margin-bottom: 10%;">${follower.email}</p>
                     <button type="button" class="button alt"
-                        style="float: right; margin:3% 5% 5% 0;">팔로우</button>
+                        style="float: right; margin:3% 5% 5% 0;" onclick="redirectToMyPage(${follower.id})">${follower.nickname}의 페이지</button>
                 </div>
             </div>
         </section>
@@ -96,7 +93,7 @@ function loadFollowPage(userProfile) {
     }
 
     for (const following of userProfile.followings) {
-        console.log(following)
+
         // 유저하나당 div하나씩 할당
         followingElement.innerHTML += `
         <section class="box feature-ji">
@@ -112,7 +109,7 @@ function loadFollowPage(userProfile) {
                     <h3 style="margin-bottom: 0;">${following.nickname}</h3>
                     <p style="margin-bottom: 10%;">${following.email}</p>
                     <button type="button" class="button alt"
-                        style="float: right; margin:3% 5% 5% 0;">팔로우</button>
+                        style="float: right; margin:3% 5% 5% 0;" onclick="redirectToMyPage(${following.id})">${following.nickname}의 페이지</button>
                 </div>
             </div>
         </section>
@@ -158,6 +155,10 @@ function logout() {
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
     window.location.href = 'login.html';
+}
+
+function redirectToMyPage(followId) {
+    window.location.href = `mypage.html?id=${followId}`;
 }
 
 // js파일 로드 시 바로 함수 실행
