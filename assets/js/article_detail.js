@@ -1,4 +1,4 @@
-const proxy = 'http://127.0.0.1:8000';  // 게시글 API 엔드포인트
+const proxy = 'https://api.bechol.com';  // 게시글 API 엔드포인트
 
 // 글 상세보기
 
@@ -7,7 +7,6 @@ window.onload = () => {
     ArticleDetail(urlParams);
     loadComments(urlParams);
     CountHeart();
-    CountBookmark();
 }
 
 const article_id = new URLSearchParams(window.location.search).get('id');

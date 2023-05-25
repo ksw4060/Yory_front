@@ -33,7 +33,7 @@
             <div class="gw-divider"></div>
             <form method="post" action="">
                 <div class="gw-write-title">
-                    <input name="gwTitle" id="gwTitle" type="text" placeholder="글 제목을 입력하세요">
+                    <input name="gwTitle" id="article_title" type="text" placeholder="글 제목을 입력하세요">
                 </div>
                 <div class="gw-write-title">
                     <form id="imgForm">
@@ -43,17 +43,17 @@
                     <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
                     <select class="form-select" id="category">
                         <option selected>--선택--</option>
-                        <option value="korean">한식</option>
-                        <option value="america">양식</option>
-                        <option value="china">중식</option>
-                        <option value="japan">일식</option>
-                        <option value="etc">그외</option>
+                        <option value="1">한식</option>
+                        <option value="2">양식</option>
+                        <option value="3">중식</option>
+                        <option value="4">일식</option>
+                        <option value="5">그외</option>
                     </select>
                 </div>
                 <div>
                     <div id="summernote"></div>
                     <button onclick="" class="gw-btn-nocolor gw-btn-small">취소</button>
-                    <button id="writeButton" class="gw-btn-small" type="button">작성 완료</button>
+                    <button id="createButton" class="gw-btn-small" type="button">작성 완료</button>
                 </div>
             </form>
             <!-- 게시글 상세 -->
@@ -86,11 +86,8 @@
         });
 
     </script>
-    <script src="assets/js/community-write.js" type="module"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
 
-
+    <script src="/assets/js/article_create.js"></script>
 </body>
 
 </html>

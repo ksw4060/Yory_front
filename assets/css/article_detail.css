@@ -68,15 +68,7 @@
 
 }
 
-.card-img-top:hover {
-    /* 이미지파일 전체 호버기능 */
-    width: 101%;
-    /* 사진크기 조절 */
-    transform: scale(1.01, 1.01);
-    /* 가로1.01배 새로 1.01배 로 커짐 */
-    transition: transform .300s;
-    /* 커지는 시간 */
-}
+
 
 
 .img-fluid {
