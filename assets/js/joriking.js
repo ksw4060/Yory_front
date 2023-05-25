@@ -20,13 +20,13 @@ async function handleImage(event) {
 async function imageUpload(formData) {
     try {
         // 로컬스토리지에서 엑세스 토큰 가져옴
-        // const accessToken = localStorage.getItem('access');
+        const accessToken = localStorage.getItem('access');
 
         const response = await fetch(`${proxy}/joriking/`, {
             method: 'POST',
-            // headers: {
-            //     'Authorization': `Bearer ${accessToken}`
-            // },
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             body: formData
         });
 
