@@ -30,6 +30,9 @@ async function viewMyArticleList() {
 
     const my_articles = articles.filter((value) => value.user.pk == my_id)
 
+    const article_list = document.getElementById("article-list");
+    article_list.innerHTML = ""
+
     my_articles.forEach((article) => {
         const template = document.createElement("div");
         template.setAttribute("class", "col-4");
@@ -44,8 +47,6 @@ async function viewMyArticleList() {
                                     <h6 class="card-text">${article.content}</h6>
                                 </div>
                             </div>`;
-        const article_list = document.getElementById("article-list");
-        article_list.innerHTML = ""
         article_list.appendChild(template);
     })
 
@@ -58,11 +59,41 @@ async function viewMyArticleList() {
     }
 }
 
-// async function viewTestArticleList() {
 
-//     const articles = await getArticle();
+async function viewCategorizedArticleList(category_id) {
 
-//     let result = articles.filter((value) => value.category == 1)
-//     console.log(result);
+    const articles = await getArticle();
 
-// }
+    const categorized_articles = articles.filter((value) => value.category == category_id)
+    console.log(categorized_articles)
+    const article_list = document.getElementById("article-list");
+    article_list.innerHTML = ""
+    categorized_articles.forEach((article) => {
+        const template = document.createElement("div");
+        template.setAttribute("class", "col-4");
+
+        let imagePath = "assets/images/headerimg.png";
+
+        if (article.image) {
+            imagePath = "http://127.0.0.1:8000/" + article.image;
+        }
+
+        template.innerHTML = `<div class="card h-100">
+                                <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">${article.title}</h5>
+                                    <h6 class="card-text">${article.content}</h6>
+                                </div>
+                            </div>`;
+
+        article_list.appendChild(template);
+    })
+
+    /* 게시글 미리보기 엔터 연타 방지 */
+    const pTags = document.querySelectorAll("p");
+    for (let i = 0; i < pTags.length; i++) {
+        if (pTags[i].childElementCount === 0) {
+            pTags[i].parentNode.removeChild(pTags[i]);
+        }
+    }
+}
