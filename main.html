@@ -19,6 +19,7 @@
         crossorigin="anonymous"></script>
     <script src="/assets/js/nav01.js"></script>
     <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/load_main.js" type="module"></script>
 
 
     <style>
@@ -92,12 +93,12 @@
     <div class="mytitle">
         <div class="row" style="width: 100%; height: 100%;">
             <div class="col-6" text-align="center">
-                <button type="button" class="button alt" style="
+                <button type="button" class="button alt" onclick="location.href='article_create.html'" style="
                     width: 80%; 
-                    height: 50%; 
+                    height: 70%; 
                     margin:auto; 
                     display:block; 
-                    margin-top: 25%; 
+                    margin-top: 30%; 
                     color: black; 
                     font-size: 300%; 
                     background-color:rgba(240, 255, 255, 0.196)
@@ -106,10 +107,10 @@
             <div class="col-6" text-align="center">
                 <button type="button" class="button alt" style="
                     width: 80%; 
-                    height: 50%; 
+                    height: 70%; 
                     margin:auto; 
                     display:block; 
-                    margin-top: 25%; 
+                    margin-top: 30%; 
                     color: black; 
                     font-size: 300%; 
                     background-color:rgba(240, 255, 255, 0.196)
@@ -168,17 +169,63 @@
     </nav>
     <!-- 게시글 네비 끝 -->
 
-    <!-- 게시글 추가 -->
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="mycards">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-                    id="article-list">
+    <!-- 게시글 목록 시작 -->
+    <div class="mycards">
+        <div class="row" id="article-list" style="margin: 0 3% 0 3%">
+
+            <!-- 카드 꽉 찾을 때 예시 -->
+            <div class="col-4">
+                <div class="card h-100">
+                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural
+                            lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
                 </div>
             </div>
+
+            <div class="col-4">
+                <div class="card h-100">
+                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural
+                            lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card h-100">
+                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural
+                            lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카드 자리 남을 때 예시 -->
+            <div class="col-4">
+                <div class="card h-100">
+                    <img src="https://i.ibb.co/8MVT3Bk/img.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural
+                            lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <!-- 게시글 끝 -->
+    <!-- 게시글 목록 끝 -->
 
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>
