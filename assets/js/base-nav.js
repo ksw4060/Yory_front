@@ -3,14 +3,8 @@ const proxy = "http://127.0.0.1:8000"
 let userProfile = null
 
 // 사용자 정보
-const userImage = document.getElementById('userImage');
-const userNickName = document.getElementById('userNickName');
-
-// // 모달창
-// const modal = document.getElementById('modal');
-// const modalUserImage = document.getElementById('modalUserImage');
-// const modalUserNickName = document.getElementById('modalUserNickName');
-// const modalClose = document.getElementsByClassName('close')[0];
+const userImage = document.getElementById('main_nickname');
+const userNickName = document.getElementById('main_email');
 
 // 로그인 상태 체크 함수
 function isLoggedIn() {
@@ -24,11 +18,6 @@ function updateUserProfile(image, nickname) {
     userImage.src = proxy + image;
     userNickName.textContent = nickname;
 }
-
-// // 모달 업데이트 함수
-// function updateModal(nickname) {
-//     modalUserNickName.textContent = nickname;
-// }
 
 // 사용자 정보 가져오기
 async function fetchUserProfile() {
@@ -73,32 +62,3 @@ window.addEventListener('load', async function () {
         userNickName.style.display = 'none'; // 사용자 이름 숨김
     }
 });
-
-
-
-
-
-// // 사용자 이미지 및 이름 클릭 이벤트 처리 (모달 열기)
-// userImage.addEventListener('click', function () {
-//     // 모달에 사용자 이미지와 이름을 업데이트
-//     const imageUrl = userImage.src;
-//     const nickName = userNickName.textContent;
-//     updateModal(imageUrl, nickName);
-
-//     // 모달 열기
-//     modal.style.display = 'block';
-// });
-
-// // 모달 닫기 버튼 클릭 이벤트 처리 (모달 닫기)
-// modalClose.addEventListener('click', function () {
-//     // 모달 닫기
-//     modal.style.display = 'none';
-// });
-
-// // 모달 외부 클릭 이벤트 처리 (모달 닫기)
-// window.addEventListener('click', function (event) {
-//     if (event.target === modal) {
-//         // 모달 외부를 클릭한 경우에만 모달 닫기
-//         modal.style.display = 'none';
-//     }
-// });
