@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필수정</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- JS -->
+    <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/profile.js"></script>
+
+    <style>
+        .cardset {
+            width: 1400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 5% auto;
+
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        .profileimg {
+            text-align: center;
+
+            width: 600px;
+            height: 700px;
+            margin: auto;
+
+            box-shadow: 0px 10px 8px 0px gray;
+            position: relative;
+            padding: 20px;
+        }
+
+        .profileinput {
+            width: 600px;
+            height: 700px;
+
+            max-width: 600px;
+
+            padding: 20px;
+            box-shadow: 0px 10px 8px 0px gray;
+            position: relative;
+            margin: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
+
+    <!-- Main -->
+    <div class="cardset">
+        <div class="profileinput">
+            <div style="margin-bottom: 10px;" class="input-group input-group-lg">
+                <span class="input-group-text">닉네임</span>
+                <input id="title" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="content"
+                    style="height: 400px"></textarea>
+                <label for="floatingTextarea2">자기소개(bio)를 입력하세요</label>
+            </div>
+        </div>
+        <div class="profileimg">
+            <h2> 프로필 사진 </h2>
+            <div class="input-group mb-3">
+                <form id="imgForm">
+                    <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
+            </div>
+            <!-- 0525 17:30 성우 : 이미지 미리보기 태그/함수 생성 -->
+            <div id="imgthumbnail"></div>
+            <!-- <img id="imgthumbnail" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
+                onerror="this.src='default_img/img.gif'"> -->
+        </div>
+
+    </div>
+    <div style="width: 358px; margin: 20px auto 0 auto;">
+        <button style="margin-right: 50px;" type="button" class="btn btn-primary btn-lg"
+            onclick="ArticleUpdate()">등록</button>
+        <button type="button" class="btn btn-secondary btn-lg">돌아가기</button>
+    </div>
+
+
+
+    <!-- 하단 푸터 시작-->
+    <div id="footer-container"></div>
+    <!-- 하단 푸터 끝-->
+
+</body>
+
+</html>
