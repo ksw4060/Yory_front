@@ -23,53 +23,56 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.text())
             .then(data => {
                 navbarContainer.innerHTML = data;
-
-                // base-nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
-                const payload = localStorage.getItem("payload");
-
-
-                const payload_parse = JSON.parse(payload)
-                console.log(payload_parse.account)
-
-                const intro = document.getElementById("intro");
-                if (intro) {
-                    const payload = localStorage.getItem("payload");
-                    const payload_parse = JSON.parse(payload);
-                    intro.innerText = `${payload_parse.nickname}님 안녕하세요`;
-                    intro.href = `${frontend_base_url}/profile.html?user_id=` + payload_parse.user_id;
-
-                    let navbarRight = document.getElementById("navbar-right");
-                    let newLi = document.createElement("li");
-                    newLi.setAttribute("class", "nav-item");
-
-                    let logoutBtn = document.createElement("button");
-                    logoutBtn.setAttribute("class", "nav-link btn");
-                    logoutBtn.innerText = "로그아웃";
-                    logoutBtn.setAttribute("onclick", "handleLogout()");
-
-                    newLi.appendChild(logoutBtn);
-
-                    navbarRight.appendChild(newLi);
-                }
-
-                let loginbtn = document.getElementById("login-btn");
-                if (loginbtn) {
-                    loginbtn.style.display = "none";
-                }
-
-                let signupbtn = document.getElementById("signup-btn");
-                if (signupbtn) {
-                    signupbtn.style.display = "none";
-                }
-
-
-
             })
-            .catch(error => {
-                console.error("Error fetching navigation bar:", error);
-            });
     }
+})
+
+//                 // base-nav.html이 로드된 후에 intro 태그와 기타 작업을 수행
+//                 const payload = localStorage.getItem("payload");
 
 
-});
+//                 const payload_parse = JSON.parse(payload)
+//                 console.log(payload_parse.account)
+
+//                 const intro = document.getElementById("intro");
+//                 if (intro) {
+//                     const payload = localStorage.getItem("payload");
+//                     const payload_parse = JSON.parse(payload);
+//                     intro.innerText = `${payload_parse.nickname}님 안녕하세요`;
+//                     intro.href = `${frontend_base_url}/profile.html?user_id=` + payload_parse.user_id;
+
+//                     let navbarRight = document.getElementById("navbar-right");
+//                     let newLi = document.createElement("li");
+//                     newLi.setAttribute("class", "nav-item");
+
+//                     let logoutBtn = document.createElement("button");
+//                     logoutBtn.setAttribute("class", "nav-link btn");
+//                     logoutBtn.innerText = "로그아웃";
+//                     logoutBtn.setAttribute("onclick", "handleLogout()");
+
+//                     newLi.appendChild(logoutBtn);
+
+//                     navbarRight.appendChild(newLi);
+//                 }
+
+//                 let loginbtn = document.getElementById("login-btn");
+//                 if (loginbtn) {
+//                     loginbtn.style.display = "none";
+//                 }
+
+//                 let signupbtn = document.getElementById("signup-btn");
+//                 if (signupbtn) {
+//                     signupbtn.style.display = "none";
+//                 }
+
+
+
+//             })
+//             .catch(error => {
+//                 console.error("Error fetching navigation bar:", error);
+//             });
+//     }
+
+
+// });
 
