@@ -26,43 +26,40 @@ async function fetchUserProfile() {
         // 요청성공하면 받은데이터를 json으로 변환
         userProfile = await response.json();
 
-        loadProfileForm();
+        loadProfileForm(userProfile);
 
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-function loadProfileForm() {
-    const passwordInput = document.getElementById('password');
-    const nicknameInput = document.getElementById('nickname');
-    const bioInput = document.getElementById('bio');
-    const imageInput = document.getElementById('image');
+function loadProfileForm(userProfile) {
+    const nicknameInput = document.getElementById('update_nickname');
+    const bioInput = document.getElementById('update_bio');
 
     // 입력창에 기존 정보 채우기
-    passwordInput.value = userProfile.password;
     nicknameInput.value = userProfile.nickname;
     bioInput.value = userProfile.bio;
-    imageInput.value = userProfile.image;
 }
 
 async function updateProfile() {
     try {
-        const password = document.getElementById('password').value;
-        const nickname = document.getElementById('nickname').value;
-        const bio = document.getElementById('bio').value;
-        const image = document.getElementById('image').files[0];
+        const accessToken = localStorage.getItem('access');
+
+        const nickname = document.getElementById('update_nickname').value;
+        const bio = document.getElementById('update_bio').value;
 
         // FormData를 사용하면 header에 "application/json"을 담지 않아도 됨
         const formData = new FormData();
-        formData.append('email', email);
-        formData.append('password', password);
+
         formData.append('nickname', nickname);
         formData.append('bio', bio);
-        formData.append('image', image);
 
         const response = await fetch(`${proxy}/users/${userId}/`, {
             method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
             body: formData
         });
 
@@ -90,11 +87,7 @@ function getPKFromAccessToken(accessToken) {
     return userId;
 }
 
-const updateForm = document.getElementById('update_form');
-updateForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // 새로고침 방지
-    updateProfile(); // 버튼 클릭 시 프로필 수정 함수 호출
-});
-
+const updateButton = document.getElementById('update_user_profile');
+updateButton.addEventListener('click', updateProfile);
 // 페이지 진입 시 기존 사용자 정보를 불러오는 함수 호출
 fetchUserProfile();
