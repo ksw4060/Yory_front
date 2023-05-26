@@ -20,23 +20,32 @@ async function getArticle() {
 
 export async function viewArticleList() {
 
+    // 게시글 전체 가져오기
     const articles = await getArticle();
+
+    const article_list = document.getElementById("article-list");
 
     articles.forEach((article) => {
         const template = document.createElement("div");
         template.setAttribute("class", "col-4");
+
+        // 디폴트 이미지
         let imagePath = "assets/images/headerimg.png";
+
         if (article.image) {
             imagePath = proxy + "/" + article.image;
         }
+
+        // 게시글 카드 생성
         template.innerHTML = `<div class="card h-100">
                                 <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <h5 class="card-title">${article.title}</h5>
-                                    <h6 class="card-text">${article.content}</h6>
+                                    <h6 class="card-text">${article.user.nickname}</h6>
+                                    <h6 class="card-text" align="right">댓글 ${article.comment_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤️ ${article.like_count}</h6>
                                 </div>
                             </div>`;
-        const article_list = document.getElementById("article-list");
+
         article_list.appendChild(template);
     })
 
@@ -50,6 +59,7 @@ export async function viewArticleList() {
 }
 
 
+// 로그인 X: 나의 게시물 버튼 삭제
 export function loadNavMenu() {
 
     const mybutton = document.getElementById("main_mybutton")
