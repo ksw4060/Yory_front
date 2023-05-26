@@ -1,4 +1,4 @@
-const proxy = 'https://api.bechol.com';  // 게시글 API 엔드포인트
+const proxy = 'http://127.0.0.1:8000';  // 게시글 API 엔드포인트
 
 // 글 상세보기
 
@@ -39,7 +39,7 @@ async function ArticleDetail(article_id) {
     article_title.innerText = response_json.title
     article_created_at.innerText = response_json.created_at
     article_updated_at.innerText = response_json.updated_at
-    article_content.innerText = response_json.content
+    article_content.innerHTML = response_json.content
     //이미지 스크린에 아티클 이미지 url들을 각각 불러오도록 했습니댜
     article_img_element.setAttribute("src", article_img_url)
 
