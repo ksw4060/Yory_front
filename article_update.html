@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="/assets/js/nav01.js"></script>
     <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/load_article_update.js" type="module"></script>
 </head>
 
 <body>
@@ -33,11 +34,13 @@
             <div class="gw-divider"></div>
             <form method="post" action="">
                 <div class="gw-write-title">
-                    <input name="gwTitle" id="article_title" type="text" placeholder="글 제목을 입력하세요">
+                    <input name="gwTitle" id="update_article_title" type="text" placeholder="글 제목을 입력하세요">
                 </div>
                 <div class="gw-write-title">
                     <form id="imgForm">
-                        <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
+                        <input type="file" class="form-control" id="update_article_thumbnail">
+                        <span id="current_article_image"></span>
+                        <!-- onchange="setThumbnail(event);"> -->
                 </div>
                 <div class="gw-write-title" style="width: 300px; margin-top: 10px;">
                     <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
@@ -53,7 +56,7 @@
                 <div>
                     <div id="summernote"></div>
                     <button onclick="" class="gw-btn-nocolor gw-btn-small">취소</button>
-                    <button id="createButton" class="gw-btn-small" type="button">수정하기</button>
+                    <button id="update_article_button" class="gw-btn-small" type="button">수정하기</button>
                 </div>
             </form>
             <!-- 게시글 상세 -->
@@ -87,7 +90,6 @@
 
     </script>
 
-    <script src="/assets/js/article_create.js"></script>
 </body>
 
 </html>
