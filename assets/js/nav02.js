@@ -57,7 +57,8 @@ async function viewMyArticleList() {
                                 <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <h5 class="card-title">${article.title}</h5>
-                                    <h6 class="card-text">${article.content}</h6>
+                                    <h6 class="card-text">${article.user.nickname}</h6>
+                                    <h6 class="card-text" align="right">댓글 ${article.comment_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤️ ${article.like_count}</h6>
                                 </div>
                             </div>`;
         article_list.appendChild(template);
@@ -102,7 +103,8 @@ async function viewCategorizedArticleList(category_id) {
                                 <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <h5 class="card-title">${article.title}</h5>
-                                    <h6 class="card-text">${article.content}</h6>
+                                    <h6 class="card-text">${article.user.nickname}</h6>
+                                    <h6 class="card-text" align="right">댓글 ${article.comment_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤️ ${article.like_count}</h6>
                                 </div>
                             </div>`;
 
