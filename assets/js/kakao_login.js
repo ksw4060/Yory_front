@@ -1,4 +1,5 @@
 document.write('<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>')
+const proxy = "http://127.0.0.1:8000"
 
 const kakao_api = config.KAKAO_JS_KEY
 Kakao.init(kakao_api)
@@ -14,7 +15,7 @@ function kakaoLogin() {
                 access_token: authObj.access_token
             }
 
-            const response = await fetch(`http://127.0.0.1:8000/users/kakao/login/`, {
+            const response = await fetch(`${proxy}/users/kakao/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
