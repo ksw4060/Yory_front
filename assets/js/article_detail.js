@@ -18,7 +18,6 @@ async function ArticleDetail(article_id) {
     })
 
     response_json = await response.json()
-    console.log(response_json)
 
     const category = document.querySelector('#category');
     // 딱히 안써도 가져와지는것같아서 주석처리했습니댜
@@ -30,10 +29,7 @@ async function ArticleDetail(article_id) {
     //백 이미지 링크를 통해 가져오도록 햇습니댜
     const article_img_url = `${proxy}${response_json.image}`;
     const article_img_element = document.getElementById("article_img")
-    // console.log(article_img_element)
 
-    // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
-    // detail_product_img.setAttribute('src', detail_product_img_url)
     category.innerText = response_json.category
     author.innerText = response_json.user.nickname
     article_title.innerText = response_json.title
@@ -105,10 +101,6 @@ async function save_comment() {
 async function loadComments(article_id) {
     const response = await fetch(`${proxy}/articles/${article_id}/comments/`);
     const comments = await response.json();
-    console.log(comments)
-
-
-
 
     comments.forEach((comment) => {
         const commentList = document.getElementById('comment-list');
@@ -144,7 +136,6 @@ async function loadComments(article_id) {
     });
 }
 
-
 // 댓글 수정 폼 열기
 async function editComment(comment_id) {
     event.preventDefault();
@@ -157,7 +148,6 @@ async function editComment(comment_id) {
 
     const textarea = document.createElement('textarea');
     textarea.classList.add('form-control');
-    console.log(before_comment.innerText)
     textarea.value = before_comment.innerText;
 
     const saveButton = document.createElement('button');
