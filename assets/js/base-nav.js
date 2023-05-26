@@ -1,10 +1,10 @@
-console.log(1)
 const proxy = "http://127.0.0.1:8000"
 let userProfile = null
 
 // 사용자 정보
-const userImage = document.getElementById('main_nickname');
+const userImage = document.getElementById('dropdownMenuButton1');
 const userNickName = document.getElementById('main_email');
+console.log(userImage)
 
 // 로그인 상태 체크 함수
 function isLoggedIn() {
@@ -52,7 +52,6 @@ async function fetchUserProfile() {
 
 // 페이지 로드 시 로그인 상태 체크하여 UI 업데이트
 window.addEventListener('load', async function () {
-    console.log(1)
     if (isLoggedIn()) {
         // 로그인 상태일 경우
         await fetchUserProfile(); // 사용자 정보 가져오기

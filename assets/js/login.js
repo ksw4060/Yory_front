@@ -1,4 +1,4 @@
-const proxy = "https://api.bechol.com"
+const proxy = "http://127.0.0.1:8000"
 
 // 입력 받은 값을 login 함수로 전달하는 함수
 function handleLogin(event) {
