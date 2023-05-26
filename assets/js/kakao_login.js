@@ -1,5 +1,5 @@
 document.write('<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>')
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 
 const kakao_api = config.KAKAO_JS_KEY
 Kakao.init(kakao_api)

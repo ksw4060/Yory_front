@@ -1,5 +1,5 @@
 
-const proxy = 'http://127.0.0.1:8000/';
+const proxy = "https://api.bechol.com";
 
 
 // Article 리스트 GET 요청
