@@ -47,7 +47,7 @@ async function ArticleDetail(article_id) {
 
 // 수정 페이지로 이동
 function redirectUpdatePage() {
-    window.location.href = `update_article.html?id=${article_id}`;
+    window.location.href = `article_update.html?id=${article_id}`;
 }
 
 

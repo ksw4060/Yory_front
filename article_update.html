@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/gw-write.css" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="/assets/js/nav01.js"></script>
+    <script src="/assets/js/footer.js"></script>
+</head>
+
+<body>
+    <!-- 상단 네비게이션바 시작-->
+    <div id="navbar-container"></div>
+    <!-- 상단 네비게이션바 끝-->
+
+    <!-- Main -->
+    <div class="container row" style="margin: 0 auto;">
+        <div id="content" class="col-10 col-14-medium" style="margin: 0 auto;">
+            <!-- Content -->
+            <h3 class="gw-community">나의 레시피</h3>
+            <div class="gw-divider"></div>
+            <form method="post" action="">
+                <div class="gw-write-title">
+                    <input name="gwTitle" id="article_title" type="text" placeholder="글 제목을 입력하세요">
+                </div>
+                <div class="gw-write-title">
+                    <form id="imgForm">
+                        <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
+                </div>
+                <div class="gw-write-title" style="width: 300px; margin-top: 10px;">
+                    <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+                    <select class="form-select" id="category">
+                        <option selected>--선택--</option>
+                        <option value="1">한식</option>
+                        <option value="2">양식</option>
+                        <option value="3">중식</option>
+                        <option value="4">일식</option>
+                        <option value="5">그외</option>
+                    </select>
+                </div>
+                <div>
+                    <div id="summernote"></div>
+                    <button onclick="" class="gw-btn-nocolor gw-btn-small">취소</button>
+                    <button id="createButton" class="gw-btn-small" type="button">수정하기</button>
+                </div>
+            </form>
+            <!-- 게시글 상세 -->
+        </div>
+    </div>
+
+
+
+    <!-- 하단 푸터 시작-->
+    <div id="footer-container"></div>
+    <!-- 하단 푸터 끝-->
+
+
+    <!-- Scripts -->
+    <script>
+        $('#summernote').summernote({
+            placeholder: '글 내용을 입력하세요',
+            tabsize: 2,
+            height: 500,
+            focus: true,
+            lang: "ko-KR",
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['picture']]
+            ],
+        });
+
+    </script>
+
+    <script src="/assets/js/article_create.js"></script>
+</body>
+
+</html>
