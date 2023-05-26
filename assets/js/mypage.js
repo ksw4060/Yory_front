@@ -1,5 +1,5 @@
 
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 let userId = null
 let id = null
 let followingList = []
@@ -97,7 +97,7 @@ function hideEditButtons() {
 // 반환된 데이터를 가지고 마이페이지에 넣어주는 함수
 function loadMyPage(userProfile) {
     // 프로필 사진
-    profileImage.src = proxy + userProfile.image;
+    profileImage.src = userProfile.image;
 
     // 프로필 박스에 넣는 데이터들
     // 추후 html에 있는 id로 교체해야함

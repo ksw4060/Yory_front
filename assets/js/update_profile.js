@@ -1,4 +1,4 @@
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 
 let userProfile = null; // 사용자 프로필 데이터를 전역변수로 저장
 let userId = null;  // 사용자 pk값을 전역변수로 저장

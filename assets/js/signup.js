@@ -1,4 +1,4 @@
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 
 // 입력된 정보를 fomdata형식으로 변환 후 signup함수로 전달하는 함수
 function handleSignup(event) {
