@@ -2,6 +2,7 @@
 const proxy = "http://127.0.0.1:8000"
 let userId = null
 let id = null
+let followingList = []
 
 const mypageProfileNickName = document.getElementById('mypage_profile_nickname');
 const profileImage = document.getElementById('profile_image');
@@ -35,6 +36,10 @@ async function fetchUserProfile() {
         const userProfile = await response.json();
         userId = parseInt(userProfile.id);
 
+        for (const followinguser of userProfile.followings) {
+            followingList.push(followinguser.id)
+        }
+
         if (!id || id === userId) {
             loadMyPage(userProfile);
             loadFollowPage(userProfile);
@@ -54,8 +59,9 @@ async function fetchUserProfile() {
 
             const userProfile = await response.json();
             userId = userProfile.id;
-            loadOtherUserPage(userProfile);
             loadFollowPage(userProfile);
+            loadOtherUserPage(userProfile);
+
 
         }
     } catch (error) {
@@ -76,9 +82,16 @@ function showEditButtons() {
 function hideEditButtons() {
     const editButton = document.getElementById('user_update_button');
     const deleteButton = document.getElementById('user_delete_button');
+    const followButton = document.getElementById('user_follow_button');
 
     editButton.style.display = 'none';
     deleteButton.style.display = 'none';
+    followButton.style.display = 'block';
+
+
+    if (followingList.includes(id)) {
+        followButton.textContent = '언팔로우';
+    }
 }
 
 // 반환된 데이터를 가지고 마이페이지에 넣어주는 함수
@@ -133,8 +146,8 @@ function loadFollowPage(userProfile) {
     }
 
     for (const following of userProfile.followings) {
-
         // 유저하나당 div하나씩 할당
+
         followingElement.innerHTML += `
         <section class="box feature-ji">
             <div class="row">
@@ -213,6 +226,54 @@ async function deleteUser() {
     }
 }
 
+async function followUser() {
+    try {
+        // 팔로우 여부 확인
+        const isFollowing = followingList.includes(id);
+
+        let confirmation;
+        if (isFollowing) {
+            confirmation = confirm('언팔로우 하시겠습니까?');
+        } else {
+            confirmation = confirm('팔로우 하시겠습니까?');
+        }
+
+        if (!confirmation) {
+            return; // 취소 시 함수 종료
+        }
+
+        // 로컬 스토리지에서 엑세스 토큰 가져옴
+        const accessToken = localStorage.getItem('access');
+
+        // 백엔드에 팔로우, 언팔로우 요청
+        const response = await fetch(`${proxy}/users/${userId}/follow/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('팔로우에 실패하였습니다.');
+        }
+
+        if (isFollowing) {
+            // 언팔로우 시 동작
+            followingList = followingList.filter(followingId => followingId !== id);
+            followButton.textContent = '팔로우';
+            alert('언팔로우가 완료되었습니다.');
+        } else {
+            // 팔로우 시 동작
+            followingList.push(id);
+            followButton.textContent = '언팔로우';
+            alert('팔로우가 완료되었습니다.');
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 function logout() {
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
@@ -227,3 +288,6 @@ function redirectToMyPage(followId) {
 fetchUserProfile();
 const deleteButton = document.getElementById('user_delete_button');
 deleteButton.addEventListener('click', deleteUser);
+
+const followButton = document.getElementById('user_follow_button');
+followButton.addEventListener('click', followUser);
