@@ -34,7 +34,7 @@ async function ArticleDetail(article_id) {
 
     // const detail_product_img_url = `${BACKEND_API}/${response_json.image}`
     // detail_product_img.setAttribute('src', detail_product_img_url)
-    category.innerText = response_json.category
+
     author.innerText = response_json.user.nickname
     article_title.innerText = response_json.title
     article_created_at.innerText = response_json.created_at
@@ -42,6 +42,24 @@ async function ArticleDetail(article_id) {
     article_content.innerHTML = response_json.content
     //이미지 스크린에 아티클 이미지 url들을 각각 불러오도록 했습니댜
     article_img_element.setAttribute("src", article_img_url)
+
+    // access token에서 user_id 얻기
+    const access = localStorage.getItem("access")
+    const base64Url = access.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    const my_id = JSON.parse(jsonPayload).user_id
+
+    if (response_json.user.pk != my_id) {
+        const author_only_buttons = document.getElementById("article_detail_author_only_button")
+        author_only_buttons.remove()
+    }
+
+    const category_dict = { "1": "한식", "2": "중식", "3": "일식", "4": "양식", "5": "그외" }
+    category.innerText = category_dict[response_json.category]
 
 }
 
@@ -119,13 +137,9 @@ async function loadComments(article_id) {
             </div>
             <div id="comment-${comment.id}" class="card-body" style="max-width: 1000px;">
                 <div class="row g-5">
-                    <!-- 유저 프로필 사진 -->
-                    <div class="col-md-4" style="width: 200px;">
-                        <img src="https://i.ibb.co/Ssm90Cq/4164335-1582361978747.gif" class="img-fluid rounded-start"
-                            alt="..." style="width: 100px;">
-                    </div>
+                    
                     <!-- 댓글 제목과 내용 입력-->
-                    <div class="col-md-8">
+                    <div class="col">
                         <div class="card-body">
                             <p class="card-text" id="comment-content-${comment.id}">${comment.content}</p>
 

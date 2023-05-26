@@ -32,7 +32,7 @@
         <div class="maintexter">
 
             <div class="card-body">
-                <div id="category">카테고리</div>
+                <div style="float: left;">카테고리: <span id="category"></span></div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">작성자 : <span id="author"></span></div>
                 <h1 id="article-title" class="card text-center"></h1>
                 <p class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -40,7 +40,7 @@
                 </p>
 
             </div>
-            <div class="card-body">
+            <div class="card-body" id="article_detail_author_only_button">
                 <a onclick="redirectUpdatePage()" class="btn btn-secondary me-md-2">수정하기</a>
                 <a href="#" onclick="ArticleDelete()" class="btn btn-secondary">삭제하기</a>
             </div>
@@ -55,9 +55,6 @@
 
                 <p class="card-text"><small class="text-muted">마지막 수정 : <span id="article-updated-at"></span></small>
                 </p>
-                <!-- <p class="card-text">This is a wider card with supporting text below as a natural
-                lead-in to additional
-                content. This content is a little bit longer.</p> -->
             </div>
 
 
