@@ -65,32 +65,21 @@
         <div class="profileinput">
             <div style="margin-bottom: 10px;" class="input-group input-group-lg">
                 <span class="input-group-text">닉네임</span>
-                <input id="title" type="text" class="form-control" aria-label="Sizing example input"
+                <input id="update_nickname" type="text" class="form-control" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-lg">
             </div>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="content"
+                <textarea id="update_bio" class="form-control" placeholder="Leave a comment here" id="content"
                     style="height: 400px"></textarea>
                 <label for="floatingTextarea2">자기소개(bio)를 입력하세요</label>
             </div>
         </div>
-        <div class="profileimg">
-            <h2> 프로필 사진 </h2>
-            <div class="input-group mb-3">
-                <form id="imgForm">
-                    <input type="file" class="form-control" id="myFile" onchange="setThumbnail(event);">
-            </div>
-            <!-- 0525 17:30 성우 : 이미지 미리보기 태그/함수 생성 -->
-            <div id="imgthumbnail"></div>
-            <!-- <img id="imgthumbnail" src="#" alt="이미지 미리보기" style="width: 500px; height: 500px;"
-                onerror="this.src='default_img/img.gif'"> -->
-        </div>
 
     </div>
     <div style="width: 358px; margin: 20px auto 0 auto;">
-        <button style="margin-right: 50px;" type="button" class="btn btn-primary btn-lg"
-            onclick="ArticleUpdate()">등록</button>
-        <button type="button" class="btn btn-secondary btn-lg">돌아가기</button>
+        <button id="update_user_profile" style="margin-right: 50px;" type="button"
+            class="btn btn-primary btn-lg">등록</button>
+        <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='mypage.html'">돌아가기</button>
     </div>
 
 
@@ -98,7 +87,7 @@
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>
     <!-- 하단 푸터 끝-->
-
+    <script src="/assets/js/update_profile.js"></script>
 </body>
 
 </html>
