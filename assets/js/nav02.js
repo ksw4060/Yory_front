@@ -1,6 +1,10 @@
+const proxy = 'http://127.0.0.1:8000/';
+
 // Article 리스트 GET 요청
 async function getArticle() {
-    const url = "http://127.0.0.1:8000/articles/";
+
+    const url = `${proxy}/articles/`;
+
     const response = await fetch(url, {
         method: "GET",
     });
@@ -26,25 +30,35 @@ async function viewMyArticleList() {
 
     const my_id = JSON.parse(jsonPayload).user_id
 
+    // 게시글 전체 가져오기
     const articles = await getArticle();
 
+    // 내가 작성한 게시글만 필터링
     const my_articles = articles.filter((value) => value.user.pk == my_id)
 
     const article_list = document.getElementById("article-list");
+
+    // 기존 게시글 삭제
     article_list.innerHTML = ""
 
+    // 게시글 카드 하나씩 생성 후 추가
     my_articles.forEach((article) => {
         const template = document.createElement("div");
         template.setAttribute("class", "col-4");
+
+        // 디폴트 이미지
         let imagePath = "assets/images/headerimg.png";
+
         if (article.image) {
-            imagePath = "http://127.0.0.1:8000/" + article.image;
+            imagePath = proxy + article.image;
         }
+
         template.innerHTML = `<div class="card h-100">
                                 <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <h5 class="card-title">${article.title}</h5>
-                                    <h6 class="card-text">${article.content}</h6>
+                                    <h6 class="card-text">${article.user.nickname}</h6>
+                                    <h6 class="card-text" align="right">댓글 ${article.comment_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤️ ${article.like_count}</h6>
                                 </div>
                             </div>`;
         article_list.appendChild(template);
@@ -62,27 +76,35 @@ async function viewMyArticleList() {
 
 async function viewCategorizedArticleList(category_id) {
 
+    // 게시글 전체 가져오기
     const articles = await getArticle();
 
+    // 입력받은 category_id로 게시글 필터링
     const categorized_articles = articles.filter((value) => value.category == category_id)
-    console.log(categorized_articles)
+
     const article_list = document.getElementById("article-list");
+
+    // 기존 게시글 삭제
     article_list.innerHTML = ""
+
+    // 게시글 카드 하나씩 생성 후 추가
     categorized_articles.forEach((article) => {
         const template = document.createElement("div");
         template.setAttribute("class", "col-4");
 
+        // 디폴트 이미지
         let imagePath = "assets/images/headerimg.png";
 
         if (article.image) {
-            imagePath = "http://127.0.0.1:8000/" + article.image;
+            imagePath = proxy + article.image;
         }
 
         template.innerHTML = `<div class="card h-100">
                                 <a style="cursor: pointer;" onclick="location.href='article_detail.html?id=${article.id}'"><img src="${imagePath}" class="card-img-top" alt="..."></a>
                                 <div class="card-body">
                                     <h5 class="card-title">${article.title}</h5>
-                                    <h6 class="card-text">${article.content}</h6>
+                                    <h6 class="card-text">${article.user.nickname}</h6>
+                                    <h6 class="card-text" align="right">댓글 ${article.comment_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤️ ${article.like_count}</h6>
                                 </div>
                             </div>`;
 
