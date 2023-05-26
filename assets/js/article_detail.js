@@ -41,7 +41,13 @@ async function ArticleDetail(article_id) {
     article_updated_at.innerText = response_json.updated_at
     article_content.innerHTML = response_json.content
     //이미지 스크린에 아티클 이미지 url들을 각각 불러오도록 했습니댜
-    article_img_element.setAttribute("src", article_img_url)
+
+    // 게시글에 이미지가 있으면 보여주고 없으면 이미지칸 지우기
+    if (response_json.image) {
+        article_img_element.setAttribute("src", article_img_url)
+    } else {
+        article_img_element.remove()
+    }
 
     // access token에서 user_id 얻기
     const access = localStorage.getItem("access")
