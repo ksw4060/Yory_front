@@ -41,6 +41,10 @@ export async function updateArticle() {
     const new_content = $('#summernote').summernote('code');
     const new_image = document.getElementById("update_article_thumbnail").files[0];
 
+    if (new_category == "--선택--") {
+        alert("카테고리를 선택해주세요.");
+    }
+
     const formdata = new FormData();
 
     formdata.append('title', new_title);
