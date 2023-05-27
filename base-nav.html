@@ -47,7 +47,7 @@
                             <a id="intro" class="nav-link btn me-2 btn_org" href="mypage.html"></a>
                         </li>
                         <!-- 로그인과 회원가입 버튼 , 로그인 했을 때에는 프로필 사진이 나오도록 if문 작성-->
-                        <div class="modal-body">
+                        <div class="modal-body" id="signbox" style="display: block;">
                             <li class="nav-item disable"><a id="signup-btn" class="nav-link btn me-2 btn_gr"
                                     href="./signup.html" style="color: white;"> 회원가입 <span class="sr-only"></span></a>
                             </li>
@@ -58,7 +58,7 @@
 
                     </ul>
                 </form>
-                <div class="dropdown" style="right: -10%; top:20%; display:block;">
+                <div class="dropdown" id="dropdownchart" style="right: -10%; top:20%; display:block;">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false"
                         style="border-radius: 100%; width:100px; height:100px; margin: auto; background-color:rgb(25, 107, 31); border-color:rgb(25, 107, 31);">
@@ -68,17 +68,18 @@
                         <div class="dropdown-body">
                             <div>
 
-                                <h1>nickname</h1>
+                                <h1 id="dropdownNickName">nickname</h1>
                                 <p>email</p>
                             </div>
 
                             <hr>
                             <button href="#" type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style="margin: 10px auto;">
+                                data-bs-target="#exampleModal" style="margin: 10px auto;"
+                                onclick="window.location.href = 'mypage.html';">
                                 프로필 보기
                             </button>
                             <button href="#" type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                                data-bs-target="#exampleModal" onclick="window.location.href = 'mypage_edit.html';">
                                 프로필 수정
                             </button>
                             <hr>
@@ -87,11 +88,10 @@
                                 data-bs-target="#exampleModal">
                                 즐겨찾기
                             </button>
-                            <div class="modal-body">
-                                <ul class="nav-item disable"><a id="signup-btn" class="nav-link btn me-2 btn_gr"
-                                        href="./signup.html"> 로그아웃
-                                        <span class="sr-only"></span></a></ul>
-                            </div>
+                            <button href="#" type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" onclick="logout()">
+                                로그아웃
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,5 @@
     </nav>
 
 </body>
-<script src="/assets/js/base-nav.js"></script>
 
 </html>

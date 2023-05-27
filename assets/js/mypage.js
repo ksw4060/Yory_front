@@ -9,7 +9,6 @@ const profileImage = document.getElementById('profile_image');
 const profileNickName = document.getElementById('mypage_nickname');
 const profileEmail = document.getElementById('mypage_email');
 const profileArticleCount = document.getElementById('mypage_article_count');
-const profilePreference = document.getElementById('mypage_preference');
 const profileFollower = document.getElementById('mypage_follower');
 const profileFollowing = document.getElementById('mypage_following');
 const profilebio = document.getElementById('mypage_bio');
@@ -106,7 +105,6 @@ function loadMyPage(userProfile) {
     profileNickName.textContent = '닉네임 : ' + userProfile.nickname
     profileEmail.textContent = '이메일 : ' + userProfile.email
     profileArticleCount.textContent = '작성한 게시글 수 : ' + userProfile.article_count
-    profilePreference.textContent = '좋아하는 음식 : ' + userProfile.preference
     profileFollower.textContent = '팔로워 : ' + userProfile.follower_count + '명'
     profileFollowing.textContent = '팔로워 : ' + userProfile.following_count + '명'
     profilebio.textContent = '자기소개 : ' + userProfile.bio
@@ -182,7 +180,6 @@ function loadOtherUserPage(userProfile) {
     profileNickName.textContent = '닉네임 : ' + userProfile.nickname
     profileEmail.textContent = '이메일 : ' + userProfile.email
     profileArticleCount.textContent = '작성한 게시글 수 : ' + userProfile.article_count
-    profilePreference.textContent = '좋아하는 음식 : ' + userProfile.preference
     profileFollower.textContent = '팔로워 : ' + userProfile.follower_count + '명'
     profileFollowing.textContent = '팔로워 : ' + userProfile.following_count + '명'
     profilebio.textContent = '자기소개 : ' + userProfile.bio

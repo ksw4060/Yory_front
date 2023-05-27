@@ -2,9 +2,12 @@ const proxy = "https://api.bechol.com"
 let userProfile = null
 
 // 사용자 정보
-const userImage = document.getElementById('dropdownMenuButton1');
-const userNickName = document.getElementById('main_email');
-console.log(userImage)
+const dropdown = document.getElementById('dropdownchart')
+const signbuttons = document.getElementById('signbox')
+const dropdownbutton = document.getElementById('dropdownMenuButton1');
+const userNickName = document.getElementById('dropdownNickName');
+const imageElement = dropdownbutton.querySelector('img');
+
 
 // 로그인 상태 체크 함수
 function isLoggedIn() {
@@ -15,8 +18,9 @@ function isLoggedIn() {
 
 // 사용자 이미지 및 이름 업데이트 함수
 function updateUserProfile(image, nickname) {
-    userImage.src = proxy + image;
+    imageElement.src = proxy + image;
     userNickName.textContent = nickname;
+
 }
 
 // 사용자 정보 가져오기
@@ -50,14 +54,22 @@ async function fetchUserProfile() {
     }
 }
 
+function logout() {
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+    window.location.href = 'login.html';
+}
+
 // 페이지 로드 시 로그인 상태 체크하여 UI 업데이트
-window.addEventListener('load', async function () {
+async function loginyesno() {
     if (isLoggedIn()) {
         // 로그인 상태일 경우
         await fetchUserProfile(); // 사용자 정보 가져오기
+        signbuttons.style.display = 'none'; // 사용자 이름 숨김
     } else {
         // 비로그인 상태일 경우
-        userImage.style.display = 'none'; // 사용자 이미지 숨김
-        userNickName.style.display = 'none'; // 사용자 이름 숨김
+        dropdown.style.display = 'none'; // 사용자 이미지 숨김
+
     }
-});
+};
+loginyesno()
