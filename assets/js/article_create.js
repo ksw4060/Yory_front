@@ -23,6 +23,14 @@ function handleCreateArticle(event) {
 
 async function createArticle(formData) {
     try {
+
+        // formData의 빈칸 확인
+        if (formData.get("title") == "" || formData.get("content") == "<p><br></p>") {
+            alert("제목과 내용은 필수입니다.");
+        } else if (formData.get("category") == "--선택--") {
+            alert("카테고리를 선택해주세요.");
+        }
+
         // 로컬스토리지에서 엑세스 토큰 가져옴
         const accessToken = localStorage.getItem('access');
 
