@@ -1,5 +1,6 @@
 
 const proxy = 'http://127.0.0.1:8000/';
+const token = localStorage.getItem("access");
 
 
 // Article 리스트 GET 요청
@@ -64,7 +65,7 @@ export function loadNavMenu() {
 
     const mybutton = document.getElementById("main_mybutton")
 
-    if (localStorage.getItem("access") == null) {
+    if (token == null) {
         mybutton.remove()
     }
 }
@@ -73,9 +74,7 @@ export function loadNavMenu() {
 // 글쓰기 버튼 클릭 시 작성페이지로 이동
 export function handleCreateButtonClick() {
 
-    const access = localStorage.getItem("access")
-
-    if (access) {
+    if (token) {
         window.location.href = "article_create.html";
     }
     else {
