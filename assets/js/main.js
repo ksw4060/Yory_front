@@ -1,5 +1,5 @@
-
 const proxy = "https://api.bechol.com";
+const token = localStorage.getItem("access");
 
 
 // Article 리스트 GET 요청
@@ -64,7 +64,19 @@ export function loadNavMenu() {
 
     const mybutton = document.getElementById("main_mybutton")
 
-    if (localStorage.getItem("access") == null) {
+    if (token == null) {
         mybutton.remove()
+    }
+}
+
+
+// 글쓰기 버튼 클릭 시 작성페이지로 이동
+export function handleCreateButtonClick() {
+
+    if (token) {
+        window.location.href = "article_create.html";
+    }
+    else {
+        alert("로그인한 사용자만 작성할 수 있습니다!")
     }
 }
