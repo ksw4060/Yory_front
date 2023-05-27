@@ -1,4 +1,4 @@
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 
 function handleCreateArticle(event) {
     event.preventDefault(); // 제출 버튼을 눌렀을 때 새로고침 방지

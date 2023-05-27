@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 navbarContainer.innerHTML = data;
             })
     }
+    const script_element = document.createElement('script')
+    script_element.setAttribute('src', '/assets/js/base-nav.js');
+    document.querySelector('head').appendChild(script_element);
 })
 
 //                 // base-nav.html이 로드된 후에 intro 태그와 기타 작업을 수행

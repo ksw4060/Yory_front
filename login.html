@@ -15,7 +15,7 @@
     <!-- JS -->
     <script src="/assets/js/nav01.js"></script>
     <script src="/assets/js/footer.js"></script>
-
+    <script type="text/javascript" src="secret.js"></script>
 
 </head>
 
@@ -26,18 +26,8 @@
     <!-- 로그인 시작-->
     <div class="login-form">
         <form id="login-form">
-            <div class="login-form-control" style="height: 5vh;"><label for="account"></label>
-                <input type="text" name="email" id="login_email" placeholder="email">
-            </div>
-            <div class="login-form-control" style="height: 5vh;"><label for="password"></label><input type="password"
-                    name="password" id="login_password" placeholder="password"></div>
-            <div class="login-button">
-                <button type="button" id="login-button">로그인</button>
-            </div>
-            <div class="buttons">
-                <button><a href="./signup.html" style="text-decoration: none; color: white;"> 회원가입</a> </button>
-                <button><a href="./reset_password.html" style="text-decoration: none; color: white;"> 비밀번호 재설정
-                    </a></button>
+            <div class="kakao-login-button">
+                <img src="assets/images/kakao_login_eng.png" id="kakao-login-button" height="100px">
             </div>
         </form>
     </div>
@@ -45,8 +35,9 @@
     <!-- 하단 푸터 시작-->
     <div id="footer-container"></div>
     <!-- 하단 푸터 끝-->
+    <script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="/assets/js/kakao_login.js"></script>
     <script src="/assets/js/login.js"></script>
-
 </body>
 
 </html>

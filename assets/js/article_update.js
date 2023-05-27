@@ -1,4 +1,4 @@
-const proxy = 'http://127.0.0.1:8000/';
+const proxy = "https://api.bechol.com";
 
 // 수정할 게시글 정보 가져오기
 export async function getUpdeteArticle() {
