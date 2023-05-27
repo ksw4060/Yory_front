@@ -1,4 +1,4 @@
-const proxy = "http://127.0.0.1:8000"
+const proxy = "https://api.bechol.com"
 let userProfile = null
 
 // 사용자 정보
