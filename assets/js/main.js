@@ -68,3 +68,17 @@ export function loadNavMenu() {
         mybutton.remove()
     }
 }
+
+
+// 글쓰기 버튼 클릭 시 작성페이지로 이동
+export function handleCreateButtonClick() {
+
+    const access = localStorage.getItem("access")
+
+    if (access) {
+        window.location.href = "article_create.html";
+    }
+    else {
+        alert("로그인한 사용자만 작성할 수 있습니다!")
+    }
+}
