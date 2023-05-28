@@ -1,4 +1,4 @@
-document.write('<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>')
+document.write('<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>')
 const proxy = "https://api.bechol.com"
 
 const kakao_api = config.KAKAO_JS_KEY
