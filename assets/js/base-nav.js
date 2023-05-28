@@ -1,4 +1,3 @@
-const proxy = "https://api.bechol.com"
 let userProfile = null
 
 // 사용자 정보
